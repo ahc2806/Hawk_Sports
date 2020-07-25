@@ -1,0 +1,53 @@
+<div class="container" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+	<div class="row">
+		<div class="col s3">
+			<br />
+			<button class="btn waves-effect waves-light" type="submit" onclick="#{productoBean.nuevo()}">
+				Nuevo<i class="material-icons right">add_circle</i>
+			</button>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12">
+			<table class="responsive-table highlight centered">
+				<thead class="grey darken-1">
+					<tr>
+						<th class="white-text">SKU</th>
+						<th class="white-text">Descripcion</th>
+						<th class="white-text">P/Compra</th>
+						<th class="white-text">P/Venta</th>
+						<th class="white-text">Existencia</th>
+						<th class="white-text">Imagen</th>
+						<th class="white-text" colspan="2">Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="#{productoBean.listaProductos}" var="producto">
+						<tr>
+							<td>#{producto.sku}</td>
+							<td>#{producto.descripcion}</td>
+							<td>$ #{producto.precioCompra}</td>
+							<td>$ #{producto.precioVenta}</td>
+							<td>#{producto.existencia}</td>
+							<td>
+								<img src="../../assets/img/productos/#{producto.imagen}" alt="#{producto.descripcion}" height="100px" />
+							</td>
+							<td>
+								<button class="btn waves-effect waves-light" onclick="#{productoBean.editar(producto.idProducto)}" type="submit">
+									<i class="material-icons">create</i>
+								</button>
+							</td>
+							<td>
+								<button class="btn waves-effect waves-light red darken-4"  type="submit">
+									<i class="material-icons">delete</i>
+								</button>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

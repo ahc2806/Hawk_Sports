@@ -1,0 +1,77 @@
+<div class="container" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:jsf="http://xmlns.jcp.org/jsf">
+	<div class="row">
+		<div class="col s12" >
+			<h:form id="formulario">
+				<div class="row">
+					<div class="col s12 left">
+						<h5>Datos generales</h5>
+					</div>
+					<div class="col s12">
+						<label class="campos" for="descripcion">Descripcion:</label>
+						<input type="text" id="descripcion" value="#{producto.descripcion}" name="descripcion" placeholder="Nombre del producto"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col s12 left">
+						<h5>Datos del almacen</h5>
+					</div>
+					<div class="col s4">
+                		<label class="campos">Tipo:</label>
+                		<h:selectOneMenu class="browser-default grey lighten-3" value="#{producto.idCategoria}">
+                			<f:selectItems value="#{categoriaBean.listaCategorias}" var="categoria" itemLabel="#{categoria.nombre}"></f:selectItems>
+						</h:selectOneMenu>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="sku">SKU:</label>
+						<input type="text" id="sku" name="sku" value="#{producto.sku}" placeholder="Codigo del articulo" />
+					</div>
+					<div class="col s4">
+						<label class="campos" for="precioCompra">Precio de compra:</label>
+						<input type="number" id="precioCompra" name="precioCompra" value="#{producto.precioCompra}" placeholder="$ 0.00"/>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="precioVenta">Precio de venta:</label>
+						<input type="number" id="precioVenta" name="precioVenta" value="#{producto.precioVenta}" placeholder="$ 0.00"/>
+					</div>
+					<div class="col s3">
+						<label class="campos" for="existencia">Existencia:</label> 
+						<input type="number" id="existencia" name="existencia" value="#{producto.existencia}" placeholder="Cantidad" />
+					</div>
+					<div class="col s5">
+						<label class="campos">Imagen:</label> 
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>Seleccionar archivo</span>
+								<input type="file" />
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text" placeholder="Ningun archivo seleccionado" value="#{producto.imagen}"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s2">
+						<h:commandButton id="guardar" class="waves-effect waves-light btn" action="#{productoBean.agregar(producto)}" value="Guardar">
+							<!--  Guardar<i class="material-icons right">send</i>-->
+							<f:ajax event="action" execute="formulario" />
+						</h:commandButton>
+					</div>
+					<div class="col s2">
+						<button class="waves-effect waves-light btn" onclick="producto(); titulo('Productos');">
+							Cancelar<i class="material-icons right">cancel</i>
+						</button>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</div><!-- 
+	<script>
+		$("#guardar").on("click", function(event) {
+			event.preventDefault();
+			//document.getElementById("guardar").action="#{productoBean.agregar(producto)}";
+		})
+	</script> -->
+</div>

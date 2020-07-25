@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <link rel="icon" type="image/png" sizes="192x192"  href="../../assets/img/favicon//android-icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon//favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon//favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon//favicon-16x16.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
+
+        <title>Panel Principal</title>
+    </h:head>
+
+    <h:body>
+        <nav class="nav-wrapper" >
+            <a href="#" data-target="menu-izquierda" class="sidenav-trigger show-on-large">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <!--Sidebar o menú desplegable izquierdo-->
+            <ul class="sidenav" id="menu-izquierda">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="../../assets/img/fondos/portada.jpg" width="300px" />
+                        </div>
+                        <a href="#user"><img class="circle" src="../../assets/img/avatares/avatar1.png" /></a>
+                        <a href="#name"><span class="white-text name">Alonso Hernandez</span></a>
+                        <a href="#email"><span class="white-text email">14547@utcv.edu.mx</span></a>
+                    </div>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/inicio.png" alt="Inicio" width="35px"/>
+                    <a onclick="inicio(); titulo('Inicio');">Inicio</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/empleados.png" alt="Empleados" width="35px"/>
+                    <a onclick="empleado(); titulo('Empleados');">Empleados</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/usuarios.png" alt="Usuarios" width="35px"/>
+                    <a onclick="usuario(); titulo('Usuarios');">Usuarios</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/clientes.png" alt="Clientes" width="35px"/>
+                    <a onclick="cliente(); titulo('Clientes');">Clientes</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/proveedores.png" alt="Proveedores" width="35px"/>
+                    <a onclick="proveedor(); titulo('Proveedores');">Proveedores</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
+                    <a onclick="producto(); titulo('Productos');">Productos</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
+                    <a>Ventas</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/reportes.png" alt="Reportes" width="35px"/>
+                    <a>Reportes</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/configuraciones.png" alt="Configuraciones" width="35px"/>
+                    <a>Configuraciones</a>
+                </li>
+                <li class="sidenav-close">
+                    <img src="../../assets/img/iconos/cerrarsesion.png" alt="Cerrar Sesion" width="35px"/>
+                    <a href="../../index.xhtml">Cerrar Sesión</a>
+                </li>
+
+            </ul>
+            <a href="#" class="brand-logo center white-text" id="titulo">Inicio</a>
+        </nav>
+
+        <div class="secciones">
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="../../assets/js/panel_principal.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </h:body>
+</html>
+
+
+

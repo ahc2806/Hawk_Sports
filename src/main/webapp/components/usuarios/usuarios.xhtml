@@ -1,0 +1,44 @@
+<div class="container" xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<div class="row">
+		<div class="col s3">
+			<br/>
+			<a class="btn waves-effect waves-light" onclick="agregar_usuario(); titulo('Nuevo Usuario');">
+            	Nuevo<i class="material-icons right">add_circle</i>
+            </a> 
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12">
+			<table class="responsive-table highlight centered" >
+		    	<thead class="grey darken-1">
+					<tr>
+		              	<th class="white-text">Tipo</th>
+		              	<th class="white-text">Usuario</th>
+		              	<th class="white-text">Avatar</th>
+		              	<th class="white-text" colspan="2">Opciones</th>
+		          	</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="#{usuarioBean.listaUsuarios}" var="usuario">
+						<tr>
+							<td>#{usuario.tipo}</td>
+							<td>#{usuario.usuario}</td>
+							<td>#{usuario.imagen}</td>
+	                        <td>
+	                        	<a class="btn waves-effect waves-light">
+	                            	<i class="material-icons">create</i>
+	                            </a>
+	                        </td>
+	                        <td>
+	                        	<a class="btn waves-effect waves-light red darken-4">
+	                            	<i class="material-icons">delete</i>
+	                            </a>
+	                    	</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

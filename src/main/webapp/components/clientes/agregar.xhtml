@@ -1,0 +1,56 @@
+<div class="container" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:jsf="http://xmlns.jcp.org/jsf">
+	<div class="row">
+		<div class="col s12">
+			<form class="formulario">
+				<div class="row">
+					<div class="col s12 left">
+	                	<h5>Datos generales</h5>
+	                </div>
+					<div class="col s4">
+						<label class="campos" for="nombre">Nombre:</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Nombre(s)"/>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="apellidoP">Apellido Paterno:</label>
+						<input type="text" id="apellidoP" name="apellidoP" placeholder="Primer Apellido"/>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="apellidoM">Apellido Materno:</label>
+						<input type="text" id="apellidoM" name="apellidoM" placeholder="Segundo Apellido"/>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="rfc">RFC:</label>
+						<input type="text" id="rfc" name="rfc" placeholder="EXAM990101PLE"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col s12 left">
+	                	<h5>Datos de contacto</h5>
+	                </div>
+                	<div class="col s4">
+						<label class="campos" for="telefono">Telefono:</label>
+						<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000"/>
+					</div>
+					<div class="col s6">
+						<label class="campos" for="correoE">Correo:</label>
+						<input type="email" id="correoE" name="correoE" placeholder="example@hotmail.com"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col s2">
+						<button class="waves-effect waves-light btn" onclick="cliente(); titulo('Clientes');" type="submit">
+							Guardar<i class="material-icons right">send</i>
+						</button>
+					</div>
+					<div class="col s2">
+						<button class="waves-effect waves-light btn" onclick="cliente(); titulo('Clientes');">
+							Cancelar<i class="material-icons right">cancel</i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

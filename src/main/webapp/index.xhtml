@@ -1,11 +1,241 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-	Hola mundo!
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+	<h:head>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+		<link rel="stylesheet" href="assets/css/index.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hawk Sports</title>
+	</h:head>
+
+	<h:body>
+		<nav class="nav-extended light-blue darken-4">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo center">Logo</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="#contenedor-footer">Contacto</a></li>
+					<li><a href="#contenedor-footer">Nosotros</a></li>
+					<li><a class="pink accent-4" onclick="document.getElementById('id01').style.display = 'block'">Iniciar sesión</a></li>
+				</ul>
+			</div><!--  
+			<div class="nav-content">
+				<ul class="tabs tabs-transparent">
+					<li class="tab"><a href="#test1">Test 1</a></li>
+					<li class="tab"><a class="active" href="#test2">Test 2</a></li>
+					<li class="tab"><a href="#test3">Disabled Tab</a></li>
+					<li class="tab"><a href="#test4">Test 4</a></li>
+				</ul>
+			</div> -->
+		</nav>
+	
+		<ul class="sidenav" id="mobile-demo">
+			<li><a onclick="document.getElementById('id01').style.display = 'block'">Iniciar sesión</a></li>
+			<li><a href="">Nosotros</a></li>
+			<li><a href="">Contacto</a></li>
+		</ul>
+		<!-- 	
+		<div id="test1" class="col s12">Test 1</div>
+		<div id="test2" class="col s12">Test 2</div>
+		<div id="test3" class="col s12">Test 3</div>
+		<div id="test4" class="col s12">Test 4</div>
+		 -->
+		 
+		 <!-- MODAL DE LOGIN -->
+        <div id="id01" class="modall">
+            <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+
+            <!-- CONTENIDO DEL MODAL -->
+            <h:form class="modal-content animate" id="formulario">
+                <div class="imgcontainer">
+                    <img src="assets/img/avatares/avatar1.png" alt="Avatar" class="avatar"/>
+                </div>
+
+                <div class="contenedor">
+                    <label for="usuario"><b>Usuario</b></label>
+                    <input type="text" placeholder="Ingresa tu usuario" name="usuario" required="TRUE" value="#{usuarioBean.usuario}"/>
+                    <label for="contrasena"><b>Contraseña</b></label>
+                    <input type="password" placeholder="Ingresa tu contraseña" name="contrasena" required="TRUE" value="#{usuarioBean.contrasena}"/>
+                    <h:commandButton id="ingresar" action="#{usuarioBean.validar()}" style="display: none"></h:commandButton>
+                    <button type="submit" id="formulario:ingresar" name="formulario:ingresar">Iniciar Sesión</button>
+                    <p><label>
+                        <input type="checkbox" class="filled-in" checked="checked" name="remember" /> 
+                        <span>Recuérdame</span>
+                    </label></p>
+                </div>
+
+                <!-- BOTÓN DE CANCELAR -->
+                <div class="contenedor" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display = 'none'" class="cancelbtn">Cancelar</button>
+                    <span class="psw"><a href="#">¿Olvidaste tu contraseña?</a></span>
+                </div>
+            </h:form>
+        </div>   
+       
+		<div class="row">
+			<div class="col s12 center">
+				<div class="col s2 m2">
+      				<div class="card">
+       	 				<div class="card-image">
+          					<img src="assets/img/fondos/ropa-hombre.jpg" alt="ropa de hombre" height="200px"/>				
+        				</div>
+        				<div class="card-content">
+        					<span class="card-title">Hombre</span>
+        				</div>
+      				</div>
+    			</div>
+    			<div class="col s2 m2">
+      				<div class="card">
+       	 				<div class="card-image">
+          					<img src="assets/img/fondos/ropa-mujer.jpg" alt="ropa de mujer" height="200px"/>				
+        				</div>
+        				<div class="card-content">
+        					<span class="card-title">Mujer</span>
+        				</div>
+      				</div>
+    			</div>
+    			<div class="col s2 m2">
+      				<div class="card">
+       	 				<div class="card-image">
+          					<img src="assets/img/fondos/ropa-nino.jpg" alt="ropa de niño" height="200px"/>				
+        				</div>
+        				<div class="card-content">
+        					<span class="card-title">Niño</span>
+        				</div>
+      				</div>
+    			</div>
+    			<div class="col s2 m2">
+      				<div class="card">
+       	 				<div class="card-image">
+          					<img src="assets/img/fondos/deportes.jpg" alt="ropa de deportes" height="200px"/>				
+        				</div>
+        				<div class="card-content">
+        					<span class="card-title">Deportes</span>
+        				</div>
+      				</div>
+    			</div>
+    			<div class="col s2 m2">
+      				<div class="card">
+       	 				<div class="card-image">
+          					<img src="assets/img/fondos/marcas.jpg" alt="ropa por marcas" height="200px"/>				
+        				</div>
+        				<div class="card-content">
+        					<span class="card-title">Marcas</span>
+        				</div>
+      				</div>
+    			</div>
+    			<div class="col s2 m2">
+      				<div class="card">
+       	 				<div class="card-image">
+          					<img src="assets/img/fondos/ropa-colecciones.jpg" alt="ropa por colecciones" height="200px" />				
+        				</div>
+        				<div class="card-content">
+        					<span class="card-title">Colecciones</span>
+        				</div>
+      				</div>
+    			</div>
+			</div>
+		</div>
+		
+		<main>
+			<div class="row">
+				<div class="col s6">
+					<h5>DEPORTES</h5>
+					<p>Siempre hay que llegar más lejos, saltar más alto, respirar más profundo. La competencia es con nosotros mismos. 
+					¿El objetivo? Sentirnos mejor. La perseverancia, las ganas y la ropa correcta, nos ayudará a cruzar la línea de llegada. 
+					Aquí encontraremos la mezcla perfecta entre tecnología y estilo para que nada nos detenga.
+					</p>
+				</div>
+				<div class="col s6">
+					<img src="assets/img/fondos/entrenamiento.jpg" class="rounded float-right" width="100%" />
+				</div>
+			</div>
+		</main>
+		
+		<div class="carousel carousel-slider">
+    		<a class="carousel-item"><img src="assets/img/carrusel/1.webp"/></a>
+    		<a class="carousel-item"><img src="assets/img/carrusel/2.webp"/></a>
+    		<a class="carousel-item"><img src="assets/img/carrusel/3.webp"/></a>
+    		<a class="carousel-item"><img src="assets/img/carrusel/4.webp"/></a>
+    		<a class="carousel-item"><img src="assets/img/carrusel/5.webp"/></a>
+  		</div>
+		
+		<footer id="contenedor-footer">
+			<div class="container-footer-all">
+				<div class="container-body">
+					<div class="colum1">
+						<h1>¿QUIÉNES SOMOS?</h1>
+						<p>Esta compañía se dedica a la venta de ropa, calzado y accesorios
+							para deportes. Hawk Sports busca incluirse dentro del mercado en línea,
+							como una de las mejores tiendas de deportes, brindado un servicio y productos 
+							de calidad al cliente, logrando así su satisfacción completa.
+						</p>
+						<h1>MISIÓN</h1>
+						<p>Queremos ser la mejor empresa deportiva del mundo.</p>
+					</div>
+					
+					<div class="colum2">
+						<h1>REDES SOCIALES</h1>
+						<div class="fila">
+							<img src="assets/img/iconos/facebook.png"/>
+							<label>Síguenos en Facebook</label>
+						</div>
+						<div class="fila">
+							<img src="assets/img/iconos/twitter.png"/>
+							<label>Síguenos en Twitter</label>
+						</div>
+						<div class="fila">
+							<img src="assets/img/iconos/instagram.png"/>
+							<label>Síguenos en Instagram</label>
+						</div>
+						<div class="fila">
+							<img src="assets/img/iconos/pinterest.png"/>
+							<label>Síguenos en Pinterest</label>
+						</div>
+					</div>
+					
+					<div class="colum3">
+						<h1>INFORMACIÓN DE CONTACTO</h1>
+						<div class="fila2">
+							<img src="assets/img/iconos/inicio.png"/>
+							<label>Loma de Guadalupe,
+									Yanga, Ver.
+									Av. 7 entre calles 17 y 19.
+							</label>
+						</div>
+						
+						<div class="fila2">
+							<img src="assets/img/iconos/telefono.png"/>
+							<label>271-134-5429</label>
+						</div>
+						
+						<div class="fila2">
+							<img src="assets/img/iconos/correo.png"/>
+							<label>14547@utcv.edu.mx</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="container-footer">
+				<div class="footer">
+					<div class="copyright">
+						© 2020 Todos los Derechos Reservados | 
+						<a href="">Hawk Sports</a>
+					</div>
+						
+					<div class="information">
+						<a href="">Información Compañía</a> |
+						<a href="">Privación y Política</a> |
+						<a href="">Términos y Condiciones</a>
+					</div>
+				</div>
+			</div>	
+		</footer>
+        
+		<script type="text/javascript" src="assets/js/materialize.min.js"></script>
+		<script type="text/javascript" src="assets/js/index.js"></script>
+	</h:body>
 </html>

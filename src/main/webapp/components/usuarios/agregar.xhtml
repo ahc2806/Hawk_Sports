@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+			<form class="formulario">
+				<div class="row">
+					<div class="col s12 left">
+	                	<h5>Datos del usuario</h5>
+	                </div>
+					<div class="col s4">
+						<label class="campos" for="usuario">Usuario:</label>
+						<input type="text" id="usuario" name="usuario" placeholder="EXAMPLE123"/>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="contrasena">Contrasena:</label>
+						<input type="password" id="contrasena" name="contrasena" placeholder="Ingrese una contrasena segura"/>
+					</div>
+					<div class="col s4">
+						<label class="campos" for="confirmarContrasena">Confirmar contrasena:</label>
+						<input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirme su contrasena"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col s12 left">
+	                	<h5>Otros datos</h5>
+	                </div>
+                	<div class="col s4">
+                		<label class="campos">Tipo:</label>
+                		<br/>
+                		<br/>
+                		<select class="browser-default grey lighten-3">
+						    <option value="Administrador">Administrador</option>
+						    <option value="Empleado">Empleado</option>
+						    <option value="Cliente">Cliente</option>
+						</select>
+					</div>
+					<div class="col s6">
+						<label class="campos">Foto de perfil:</label> 
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>Seleccionar archivo</span>
+								<input type="file" />
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text" placeholder="Ningun archivo seleccionado" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col s2">
+						<button class="waves-effect waves-light btn" onclick="usuario(); titulo('Usuarios');" type="submit">
+							Guardar<i class="material-icons right">send</i>
+						</button>
+					</div>
+					<div class="col s2">
+						<button class="waves-effect waves-light btn" onclick="usuario(); titulo('Usuarios');">
+							Cancelar<i class="material-icons right">cancel</i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

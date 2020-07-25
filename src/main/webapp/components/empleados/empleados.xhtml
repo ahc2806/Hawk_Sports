@@ -1,0 +1,48 @@
+<div class="container" xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<div class="row">
+		<div class="col s3">
+			<br/>
+			<a class="btn waves-effect waves-light" onclick="agregar_empleado(); titulo('Nuevo Empleado');">
+            	Nuevo<i class="material-icons right">add_circle</i>
+            </a> 
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12">
+			<table class="responsive-table highlight centered" >
+		    	<thead class="grey darken-1">
+		        	<tr>
+		            	<th class="white-text">Nombre Completo</th>
+		              	<th class="white-text">Telefono</th>
+		              	<th class="white-text">Correo</th>
+		              	<th class="white-text">Puesto</th>
+		              	<th class="white-text">Sueldo</th>
+		              	<th class="white-text" colspan="2">Opciones</th>
+		          	</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="#{empleadoBean.listaEmpleados}" var="empleado">
+						<tr>
+							<td>#{empleado.nombre} #{empleado.apellidoP} #{empleado.apellidoM}</td>
+							<td>#{empleado.telefono}</td>
+							<td>#{empleado.correoE}</td>
+							<td>#{empleado.puesto}</td>
+							<td>#{empleado.sueldo}</td>
+	                        <td>
+	                        	<a class="btn waves-effect waves-light">
+	                            	<i class="material-icons">create</i>
+	                            </a>
+	                        </td>
+	                        <td>
+	                        	<a class="btn waves-effect waves-light red darken-4">
+	                            	<i class="material-icons">delete</i>
+	                            </a>
+	                    	</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,372 @@
+@charset "ISO-8859-1";
+
+
+/* NAVBAR
+body {
+	margin: 0px;
+}
+
+#login {
+	background-color: #777B7F;
+	border-radius: 20px;
+}
+
+#login:hover {
+	background-color: #FF5515;
+	border-radius: 20px;
+	text-decoration-line: none
+}
+
+.form-inline a {
+	color: #FFF;
+	font-size: 18px;
+}
+
+.form-inline a:hover {
+	text-decoration-line: underline;
+	color: #FFF;
+	font-size: 18px;
+}
+
+.list-group {
+	width: 25%;
+	border-radius: 0px;
+}*/
+
+/* HEADER
+header {
+	display: inline-block;
+	padding: 20px;
+}
+
+.card-columns {
+	display: inline-block;
+}*/
+
+/* SOCIAL-BAR
+.sticky-container {
+	padding: 0px;
+	margin: 0px;
+	position: fixed;
+	right: -130px;
+	top: 230px;
+	width: 210px;
+	z-index: 1100;
+}
+
+.sticky li {
+	list-style-type: none;
+	background-color: #fff;
+	color: #efefef;
+	height: 43px;
+	padding: 0px;
+	margin: 0px 0px 1px 0px;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+	cursor: pointer;
+}
+
+.sticky li:hover {
+	margin-left: -115px;
+}
+
+.sticky li img {
+	float: left;
+	margin: 5px 4px;
+	margin-right: 5px;
+}
+
+.sticky li p {
+	padding-top: 5px;
+	line-height: 16px;
+	font-size: 11px;
+}
+
+.sticky li p a {
+	text-decoration: none;
+	color: #2C3539;
+}
+
+.sticky li p a:hover {
+	text-decoration: underline;
+}*/
+
+/* MAIN
+.resena {
+	padding: 40px 20px;
+	width: 50%;
+	position: absolute;
+}
+
+.resena p {
+	text-align: justify;
+}
+
+.rounded {
+	margin: 40px 20px;
+}*/
+
+/*LOGIN*/
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 30px;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 30px;
+	cursor: pointer;
+	width: 100%;
+}
+
+button {
+	opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+	width: auto;
+	padding: 10px 18px;
+	background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+	text-align: center;
+	margin: 24px 0 12px 0;
+	position: relative;
+}
+
+img.avatar {
+	width: 40%;
+	border-radius: 50%;
+}
+
+.contenedor {
+	padding: 16px;
+}
+
+span.psw {
+	float: right;
+	padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modall {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 60%;
+	top: 0;
+	width: 40%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	/* 5% from the top, 15% from the bottom and centered */
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+	padding: 40px;
+}
+
+/* The Close Button (x) */
+.close {
+	position: absolute;
+	right: 25px;
+	top: 0;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: red;
+	cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)
+}
+
+to {
+	-webkit-transform: scale(1)
+}
+
+}
+@keyframes animatezoom {
+	from {transform: scale(0)
+}
+
+to {
+	transform: scale(1)
+}
+
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+	span.psw {
+		display: block;
+		float: none;
+	}
+	.cancelbtn {
+		width: 100%;
+	}
+}
+
+/*Footer*/
+footer{
+    width: 100%;
+    background: #003A67;
+    color: white;   
+    
+}
+
+.container-footer-all{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+}
+
+.container-body{
+    display: flex;
+    justify-content: space-between;
+}
+
+.colum1{
+    max-width: 400px;
+}
+
+.colum1 h1{
+    font-size: 22px;
+}
+
+.colum1 p{
+    font-size: 14px;
+    color: #C7C7C7;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.colum2{
+    max-width: 400px;
+    
+}
+
+.colum2 h1{
+    font-size: 22px;
+}
+
+.fila{
+    margin-top: 20px;
+    display: flex;
+}
+
+.fila img{
+    width: 36px;
+    height: 36px;
+	cursor: pointer;
+}
+
+.fila label{
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #C7C7C7;
+	cursor: pointer;
+}
+
+.colum3{
+    max-width: 400px;
+}
+
+.colum3 h1{
+    font-size: 22px;
+}
+
+.fila2{
+    margin-top: 20px;
+    display: flex;
+}
+
+.fila2 img{
+    width: 36px;
+    height: 36px;
+}
+
+.fila2 label{
+    margin-top: 10px;
+    margin-left: 20px;
+    max-width: 140px;
+}
+
+.container-footer{
+    width: 100%;  
+    background: #001D33;
+}
+
+.footer{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;  
+    padding: 20px;
+}
+
+.copyright{
+    color: #C7C7C7;
+}
+
+.copyright a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.information a{
+    text-decoration: none;
+    color: #C7C7C7;
+}
+
+
+@media screen and (max-width: 1100px){
+    
+    .container-body{
+        flex-wrap: wrap;
+    }
+    
+    .colum1{
+        max-width: 100%;
+    }
+    
+    .colum2,
+    .colum3{
+        margin-top: 40px;
+    }
+}
+
