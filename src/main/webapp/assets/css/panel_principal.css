@@ -10,10 +10,6 @@
 	}
 }
 
-.nav-wrapper {
-	background-color: #343A40;
-}
-
 header, main, footer {
 	padding-left: 300px;
 }
@@ -40,11 +36,18 @@ header, main, footer {
 
 .sidenav-close:hover,
 .sidenav-close:hover a {
-    background-color: #777B7F;
+    background-color: #003A67;
     color: #FFF;
     font-weight: bold;
 }
 
 .campos {
 	font-size: 18px;
+}
+
+.btnSalir {
+	height: 100%;
+    border-radius: 0px;
+    box-shadow: none;
+    background: transparent;
 }

@@ -104,8 +104,9 @@ public class UsuarioDAO {
         if (!dato.isEmpty()) {
             System.out.println("Datos correctos");
             return true;
+        } else {
+        	return false;
         }
-        return false;
     }
 }
 

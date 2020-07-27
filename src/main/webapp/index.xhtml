@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf">
 	<h:head>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
@@ -55,9 +55,9 @@
 
                 <div class="contenedor">
                     <label for="usuario"><b>Usuario</b></label>
-                    <input type="text" placeholder="Ingresa tu usuario" name="usuario" required="TRUE" value="#{usuarioBean.usuario}"/>
+                    <input type="text" placeholder="Ingresa tu usuario" name="usuario" required="TRUE" jsf:value="#{usuarioBean.usuario}"/>
                     <label for="contrasena"><b>Contraseña</b></label>
-                    <input type="password" placeholder="Ingresa tu contraseña" name="contrasena" required="TRUE" value="#{usuarioBean.contrasena}"/>
+                    <input type="password" placeholder="Ingresa tu contraseña" name="contrasena" required="TRUE" jsf:value="#{usuarioBean.contrasena}"/>
                     <h:commandButton id="ingresar" action="#{usuarioBean.validar()}" style="display: none"></h:commandButton>
                     <button type="submit" id="formulario:ingresar" name="formulario:ingresar">Iniciar Sesión</button>
                     <p><label>
@@ -227,7 +227,6 @@
 					</div>
 						
 					<div class="information">
-						<a href="">Información Compañía</a> |
 						<a href="">Privación y Política</a> |
 						<a href="">Términos y Condiciones</a>
 					</div>

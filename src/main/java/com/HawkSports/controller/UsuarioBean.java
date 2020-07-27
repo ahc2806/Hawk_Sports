@@ -17,14 +17,13 @@ import com.HawkSports.model.Usuario;
 public class UsuarioBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private UsuarioDAO usuarioDAO;
+    
     private List<Usuario> listaUsuarios = new ArrayList<Usuario>();
     private String usuario;
     private String contrasena;
-    public static final String LOGOUT_PAGE_REDIRECT = "/login.xhtml?faces-redirect=true";
 
     public List<Usuario> getListaUsuarios() {
-        usuarioDAO = new UsuarioDAO();
+    	UsuarioDAO usuarioDAO = new UsuarioDAO();
         listaUsuarios = usuarioDAO.consultar();
         return listaUsuarios;
     }
@@ -56,7 +55,7 @@ public class UsuarioBean implements Serializable {
         if (valido) {
             HttpSession session = SesionUtils.getSession();
             session.setAttribute("usuario", usuario);
-            return "components/menu/menu";
+            return "components/menu/menu.xhtml?faces-redirect=true\"";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
@@ -71,7 +70,7 @@ public class UsuarioBean implements Serializable {
         System.out.println("Cerrando");
         HttpSession session = SesionUtils.getSession();
         session.invalidate();
-        return LOGOUT_PAGE_REDIRECT;
+        return "/index.xhtml?faces-redirect=true\"";
     }
 }
 
