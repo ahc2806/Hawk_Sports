@@ -3,15 +3,11 @@ package com.HawkSports.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import com.HawkSports.model.JPAUtil;
 import com.HawkSports.model.Producto;
 
-@Named
-@RequestScoped
 public class ProductoDAO {
 	EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 

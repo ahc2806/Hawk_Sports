@@ -1,7 +1,5 @@
 package com.HawkSports.model;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-@Named
-@RequestScoped
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Inidica que se autoincrementa
