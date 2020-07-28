@@ -60,10 +60,12 @@
                     <input type="password" placeholder="Ingresa tu contraseña" name="contrasena" required="TRUE" jsf:value="#{usuarioBean.contrasena}"/>
                     <h:commandButton id="ingresar" action="#{usuarioBean.validar()}" style="display: none"></h:commandButton>
                     <button type="submit" id="formulario:ingresar" name="formulario:ingresar">Iniciar Sesión</button>
-                    <p><label>
-                        <input type="checkbox" class="filled-in" checked="checked" name="remember" /> 
-                        <span>Recuérdame</span>
-                    </label></p>
+                    <p>
+                    	<label>
+	                        <input type="checkbox" class="filled-in" checked="checked" name="remember" /> 
+	                        <span>Recuérdame</span>
+                    	</label>
+                    </p>
                 </div>
 
                 <!-- BOTÓN DE CANCELAR -->

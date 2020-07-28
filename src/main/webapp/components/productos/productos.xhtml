@@ -65,7 +65,7 @@
 	                    <a>Configuraciones</a>
 	                </li>
 	            </ul>
-	            <a href="#" class="brand-logo center white-text" id="titulo">Inicio</a>
+	            <a href="#" class="brand-logo center white-text" id="titulo">Productos</a>
 	            <h:commandButton id="salir" action="#{usuarioBean.cerrar()}" style="display: none"></h:commandButton>
 		        <button class="btn-large waves-effect waves-light right btnSalir" type="submit" id="frm:salir" name="frm:salir">
 		        	Cerrar sesión<i class="material-icons right">account_circle</i>
@@ -93,7 +93,7 @@
 							<thead class="light-blue darken-1">
 								<tr>
 									<th class="white-text">SKU</th>
-									<th class="white-text">Descripcion</th>
+									<th class="white-text">Descripción</th>
 									<th class="white-text">P/Compra</th>
 									<th class="white-text">P/Venta</th>
 									<th class="white-text">Existencia</th>
@@ -113,16 +113,12 @@
 											<img src="../../assets/img/productos/#{producto.imagen}" alt="#{producto.descripcion}" height="100px" />
 										</td>
 										<td>
-											<h:commandButton id="editar" action="#{productoBean.editar(producto.idProducto)}" style="display: none" />
-											<button class="btn waves-effect waves-light" type="submit" id="frm2:editar" name="frm2:editar">
-												<i class="material-icons">create</i>
-											</button>
+											<h:commandButton id="editar" action="#{productoBean.editar(producto.idProducto)}" 
+											class="btn waves-effect waves-light amber darken-4" value="Editar" />
 										</td>
 										<td>
-											<h:commandButton id="eliminar" action="#{productoBean.eliminar(producto.idProducto)}" style="display: none" />
-											<button class="btn waves-effect waves-light red darken-4" type="submit" id="frm2:eliminar" name="frm2:eliminar">
-												<i class="material-icons">delete</i>
-											</button>
+											<h:commandButton id="eliminar" action="#{productoBean.eliminar(producto.idProducto)}" 
+											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
 										</td>
 									</tr>
 								</c:forEach>

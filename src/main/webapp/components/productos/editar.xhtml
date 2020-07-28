@@ -1,70 +1,160 @@
-<div class="container" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:jsf="http://xmlns.jcp.org/jsf">
-	<div class="row">
-		<div class="col s12">
-			<form class="formulario">
-				<div class="row">
-					<div class="col s12 left">
-						<h5>Datos generales</h5>
-					</div>
-					<div class="col s12">
-						<label class="campos" for="descripcion">Descripcion:</label>
-						<input type="tel" id="descripcion" name="descripcion" value="#{producto.descripcion}" placeholder="Nombre del producto"/>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col s12 left">
-						<h5>Datos del almacen</h5>
-					</div>
-					<div class="col s4">
-                		<label class="campos">Tipo:</label>
-                		<h:selectOneMenu class="browser-default grey lighten-3" value="#{producto.idCategoria}">
-                			<f:selectItems value="#{categoriaBean.listaCategorias}" var="categoria" itemLabel="#{categoria.nombre}"></f:selectItems>
-						</h:selectOneMenu>
-					</div>
-					<div class="col s4">
-						<label class="campos" for="sku">SKU:</label>
-						<input type="text" id="sku" name="sku" placeholder="Codigo del articulo" />
-					</div>
-					<div class="col s4">
-						<label class="campos" for="precioCompra">Precio de compra:</label>
-						<input type="number" id="precioCompra" name="precioCompra" placeholder="$ 0.00"/>
-					</div>
-					<div class="col s4">
-						<label class="campos" for="precioVenta">Precio de venta:</label>
-						<input type="number" id="precioVenta" name="precioVenta" placeholder="$ 0.00"/>
-					</div>
-					<div class="col s4">
-						<label class="campos" for="existencia">Existencia:</label> 
-						<input type="number" id="existencia" name="existencia" placeholder="Cantidad" />
-					</div>
-					<div class="col s8">
-						<label class="campos">Imagen:</label> 
-						<div class="file-field input-field">
-							<div class="btn">
-								<span>Seleccionar archivo</span>
-								<input type="file" />
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" href="../../assets/css/materialize.min.css" media="screen,projection" />
+        <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hawk Sports - Productos</title>
+    </h:head>
+
+    <h:body>
+        <nav class="nav-wrapper light-blue darken-4" >
+            <a href="#" data-target="menu-izquierda" class="sidenav-trigger show-on-large">
+                <i class="material-icons">menu</i>
+            </a>
+			
+			<h:form id="frm">
+	            <ul class="sidenav" id="menu-izquierda">
+	                <li>
+	                    <div class="user-view">
+	                        <div class="background">
+	                            <img src="../../assets/img/fondos/portada.jpg" width="300px" />
+	                        </div>
+	                        <a href="#user"><img class="circle" src="../../assets/img/avatares/avatar1.png" /></a>
+	                        <a href="#name"><span class="white-text name">Alonso Hernandez</span></a>
+	                        <a href="#email"><span class="white-text email">14547@utcv.edu.mx</span></a>
+	                    </div>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/home.png" alt="Inicio" width="35px"/>
+	                    <a href="../menu/menu.xhtml">Inicio</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/empleados.png" alt="Empleados" width="35px"/>
+	                    <a href="../empleados/empleados.xhtml">Empleados</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/usuarios.png" alt="Usuarios" width="35px"/>
+	                    <a href="../usuarios/usuarios.xhtml">Usuarios</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/clientes.png" alt="Clientes" width="35px"/>
+	                    <a href="../clientes/clientes.xhtml">Clientes</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/proveedores.png" alt="Proveedores" width="35px"/>
+	                    <a href="../proveedores/proveedores.xhtml">Proveedores</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
+	                    <a href="productos.xhtml">Productos</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
+	                    <a>Ventas</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/reportes.png" alt="Reportes" width="35px"/>
+	                    <a>Reportes</a>
+	                </li>
+	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/configuraciones.png" alt="Configuraciones" width="35px"/>
+	                    <a>Configuraciones</a>
+	                </li>
+	            </ul>
+	            <a href="#" class="brand-logo center white-text" id="titulo">Nuevo Producto</a>
+	            <h:commandButton id="salir" action="#{usuarioBean.cerrar()}" style="display: none"></h:commandButton>
+		        <button class="btn-large waves-effect waves-light right btnSalir" type="submit" id="frm:salir" name="frm:salir">
+		        	Cerrar sesión<i class="material-icons right">account_circle</i>
+		        </button>
+	        </h:form>
+        </nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col s12" >
+					<h:form id="frm3">
+						<div class="row">
+							<div class="col s12 left">
+								<h5>Datos generales</h5>
 							</div>
-							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text" placeholder="Ningun archivo seleccionado" />
+							<div class="col s12">
+								<label class="campos" for="descripcion">Descripción:</label>
+								<input type="text" id="descripcion"  jsf:value="#{producto.descripcion}" 
+								name="descripcion" placeholder="Nombre del producto" required="TRUE" class="validate" />
 							</div>
 						</div>
-					</div>
+						
+						<div class="row">
+							<div class="col s12 left">
+								<h5>Datos del almacén</h5>
+							</div>
+							<div class="col s4">
+		                		<label class="campos">Tipo:</label>
+		                		<h:selectOneMenu class="browser-default grey lighten-3" value="#{producto.idCategoria}">
+		                			<f:selectItems value="#{categoriaBean.listaCategorias}" var="categoria" 
+		                						itemLabel="#{categoria.nombre}" itemValue="#{categoria.idCategoria}" />
+								</h:selectOneMenu>
+							</div>
+							<div class="col s4">
+								<label class="campos" for="sku">SKU:</label>
+								<input type="text" id="sku" name="sku" jsf:value="#{producto.sku}" 
+								placeholder="Código del artículo" required="TRUE" class="validate" />
+							</div>
+							<div class="col s4">
+								<label class="campos" for="precioCompra">Precio de compra:</label>
+								<input type="number" id="precioCompra" name="precioCompra" jsf:value="#{producto.precioCompra}" 
+								placeholder="$ 0.00" required="TRUE" class="validate" />
+							</div>
+							<div class="col s4">
+								<label class="campos" for="precioVenta">Precio de venta:</label>
+								<input type="number" id="precioVenta" name="precioVenta" jsf:value="#{producto.precioVenta}" 
+								placeholder="$ 0.00" required="TRUE" class="validate" />
+							</div>
+							<div class="col s3">
+								<label class="campos" for="existencia">Existencia:</label> 
+								<input type="number" id="existencia" name="existencia" jsf:value="#{producto.existencia}" 
+								placeholder="Cantidad" required="TRUE" class="validate" />
+							</div>
+							<div class="col s5">
+								<label class="campos">Imagen:</label> 
+								<div class="file-field input-field">
+									<div class="btn-small">
+										<span>Seleccionar archivo</span>
+										<input type="file" />
+									</div>
+									<div class="file-path-wrapper">
+										<input class="file-path validate" type="text" placeholder="Ningun archivo seleccionado" 
+										jsf:value="#{producto.imagen}" required="TRUE" />
+									</div>
+								</div>
+							</div>
+						</div>
+		
+						<div class="row">
+							<div class="col s2">
+								<h:commandButton id="actualizar" action="#{productoBean.actualizar(producto)}" style="display: none"/>
+								<button class="btn waves-effect waves-light" type="submit" id="frm3:actualizar" name="frm3:actualizar">
+									Guardar<i class="material-icons right">send</i>
+								</button>
+							</div>
+							<div class="col s2">
+								<a class="btn waves-effect waves-light red darken-4" href="productos.xhtml">
+									Cancelar<i class="material-icons right">cancel</i>
+								</a>
+							</div>
+						</div>
+					</h:form>
 				</div>
-
-				<div class="row">
-					<div class="col s2">
-						<a class="waves-effect waves-light btn" onclick="producto(); titulo('Productos');" type="submit">
-							Guardar<i class="material-icons right">send</i>
-						</a>
-					</div>
-					<div class="col s2">
-						<a class="waves-effect waves-light btn" onclick="producto(); titulo('Productos');">
-							Cancelar<i class="material-icons right">cancel</i>
-						</a>
-					</div>
-				</div>
-			</form>
+			</div>
 		</div>
-	</div>
-</div>
+				
+		<script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+        <script src="../../assets/js/panel_principal.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    </h:body>
+</html>

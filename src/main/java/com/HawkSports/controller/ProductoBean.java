@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.http.Part;
 
 import com.HawkSports.dao.ProductoDAO;
 import com.HawkSports.model.Producto;
@@ -19,7 +18,6 @@ public class ProductoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private List<Producto> listaProductos = new ArrayList<Producto>();
-	private Part img;
 
 	public List<Producto> getListaProductos() {
 		ProductoDAO productoDAO = new ProductoDAO();
@@ -30,28 +28,23 @@ public class ProductoBean implements Serializable {
 	public void setListaProductos(List<Producto> listaProductos) {
 		this.listaProductos = listaProductos;
 	}
-
-	public Part getImg() {
-		return img;
-	}
-
-	public void setImg(Part img) {
-		this.img = img;
-	}
 	
 	public String nuevo() {
 		Producto producto = new Producto();
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("producto", producto);
-		return "agregar_producto(); titulo('Nuevo Producto');";
+		return "agregar.xhtml?faces-redirect=true\"";
 	}
 
 	public String agregar(Producto producto) {
 		ProductoDAO productoDAO = new ProductoDAO();
 		producto.setEstado(true);
-		producto.setImagen(img.getSubmittedFileName());
 		productoDAO.agregar(producto);
-		return "producto()";
+		return "productos.xhtml?faces-redirect=true\"";
+	}
+	
+	public String cancelar() {
+		return "productos.xhtml?faces-redirect=true\"";
 	}
 
 	public String editar(Short idProducto) {
@@ -60,23 +53,22 @@ public class ProductoBean implements Serializable {
 		producto = productoDAO.consultarId(idProducto);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("producto", producto);
-		return "editar_producto();";
+		System.out.println("Manda el id #"+idProducto);
+		return "editar.xhtml?faces-redirect=true\"";
 	}
 
 	public String actualizar(Producto producto) {
-		if (img != null) {
-			producto.setImagen(img.getSubmittedFileName());
-		}
 		ProductoDAO productoDAO = new ProductoDAO();
 		productoDAO.editar(producto);
-		return "allProducts";
+		return "productos.xhtml?faces-redirect=true\"";
 	}
 	
-	public void eliminar(Short idProducto) {	
+	public String eliminar(Short idProducto) {	
 		ProductoDAO productoDAO = new ProductoDAO();
 		Producto producto = new Producto();
 		producto = productoDAO.consultarId(idProducto);
 		producto.setEstado(false);		
 		productoDAO.editar(producto);
+		return "productos.xhtml?faces-redirect=true\"";
 	}
 }
