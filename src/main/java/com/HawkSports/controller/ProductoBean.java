@@ -43,17 +43,12 @@ public class ProductoBean implements Serializable {
 		return "productos.xhtml?faces-redirect=true\"";
 	}
 	
-	public String cancelar() {
-		return "productos.xhtml?faces-redirect=true\"";
-	}
-
 	public String editar(Short idProducto) {
 		ProductoDAO productoDAO = new ProductoDAO();
 		Producto producto = new Producto();
 		producto = productoDAO.consultarId(idProducto);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("producto", producto);
-		System.out.println("Manda el id #"+idProducto);
 		return "editar.xhtml?faces-redirect=true\"";
 	}
 
