@@ -10,15 +10,13 @@ public class CategoriaDAO {
 	EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 	Categoria categoria = new Categoria();
 	
-	public void guardar(Categoria categoria) {
+	public void agregar(Categoria categoria) {
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.persist(categoria);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -42,8 +40,6 @@ public class CategoriaDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -54,8 +50,6 @@ public class CategoriaDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -67,21 +61,6 @@ public class CategoriaDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
-		}
-	}
-
-	public void pre_eliminar(Short idCategoria) {
-		try {
-			categoria = entityManager.find(Categoria.class, idCategoria);
-			entityManager.getTransaction().begin();
-			categoria.setEstado(false);
-			entityManager.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 	

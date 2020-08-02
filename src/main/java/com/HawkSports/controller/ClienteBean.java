@@ -13,12 +13,11 @@ import com.HawkSports.model.Cliente;
 public class ClienteBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private ClienteDAO cliente;
     private List<Cliente> listaClientes = new ArrayList<Cliente>();
 
     public List<Cliente> getListaClientes() {
-        cliente = new ClienteDAO();
-        listaClientes = cliente.consultar();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        listaClientes = clienteDAO.consultar();
         return listaClientes;
     }
 

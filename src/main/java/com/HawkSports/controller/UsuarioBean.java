@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
@@ -49,7 +47,6 @@ public class UsuarioBean implements Serializable {
     }
 
     public String validar() {
-        System.out.println("Validar(): " + usuario + "" + contrasena);
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         boolean valido = usuarioDAO.esValido(usuario, contrasena);
         if (valido) {
@@ -57,17 +54,11 @@ public class UsuarioBean implements Serializable {
             session.setAttribute("usuario", usuario);
             return "components/menu/menu.xhtml?faces-redirect=true\"";
         } else {
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Incorrect Username and Passowrd",
-                            "Please enter correct username and Password"));
-            return "login";
+        	return "/index.xhtml?faces-redirect=true\"";
         }
     }
 
     public String cerrar() {
-        System.out.println("Cerrando");
         HttpSession session = SesionUtils.getSession();
         session.invalidate();
         return "/index.xhtml?faces-redirect=true\"";

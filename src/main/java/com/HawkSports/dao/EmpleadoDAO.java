@@ -1,6 +1,5 @@
 package com.HawkSports.dao;
 
-import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -11,15 +10,13 @@ public class EmpleadoDAO {
 	EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 	Empleado empleado = new Empleado();
 
-	public void guardar(Empleado empleado) {
+	public void agregar(Empleado empleado) {
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.persist(empleado);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -29,10 +26,6 @@ public class EmpleadoDAO {
 			List<Empleado> lista_empleados;
 			Query query = entityManager.createQuery("SELECT e FROM Empleado e WHERE e.estado = TRUE");
 			lista_empleados = query.getResultList();
-			Iterator<Empleado> iterator = lista_empleados.iterator();
-			while (iterator.hasNext()) {
-				System.out.println(iterator.next());
-			}
 			return lista_empleados;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,8 +40,6 @@ public class EmpleadoDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -59,8 +50,6 @@ public class EmpleadoDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -72,21 +61,6 @@ public class EmpleadoDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
-		}
-	}
-
-	public void pre_eliminar(Short idEmpleado) {
-		try {
-			empleado = entityManager.find(Empleado.class, idEmpleado);
-			entityManager.getTransaction().begin();
-			empleado.setEstado(false);
-			entityManager.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 }

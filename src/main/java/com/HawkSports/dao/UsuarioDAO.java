@@ -1,6 +1,5 @@
 package com.HawkSports.dao;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -20,8 +19,6 @@ public class UsuarioDAO {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            JPAUtil.shutdown();
         }
     }
 
@@ -31,10 +28,6 @@ public class UsuarioDAO {
             List<Usuario> lista_usuarios;
             Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.estado = TRUE");
             lista_usuarios = query.getResultList();
-            Iterator<Usuario> iterator = lista_usuarios.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
             return lista_usuarios;
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,8 +42,6 @@ public class UsuarioDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-        } finally {
-            JPAUtil.shutdown();
         }
     }
 
@@ -61,8 +52,6 @@ public class UsuarioDAO {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            JPAUtil.shutdown();
         }
     }
 
@@ -74,39 +63,21 @@ public class UsuarioDAO {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            JPAUtil.shutdown();
-        }
-    }
-
-    public void pre_eliminar(Short idUsuario) {
-        try {
-            usuario = entityManager.find(Usuario.class, idUsuario);
-            entityManager.getTransaction().begin();
-            usuario.setEstado(false);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            JPAUtil.shutdown();
         }
     }
 
     @SuppressWarnings("unchecked")
     public boolean esValido(String usuario, String contrasena) {
-        System.out.println("esValido() " + usuario + "" + contrasena);
         Query query = entityManager.createQuery(
                 "SELECT u.usuario, u.contrasena FROM Usuario u WHERE u.usuario LIKE :usuario and u.contrasena LIKE :contrasena");
         query.setParameter("usuario", usuario);
         query.setParameter("contrasena", contrasena);
 
         List<String> dato = query.getResultList();
-        if (!dato.isEmpty()) {
-            System.out.println("Datos correctos");
+        if (!dato.isEmpty()) 
             return true;
-        } else {
+         else 
         	return false;
-        }
     }
 }
 

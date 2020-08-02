@@ -1,6 +1,5 @@
 package com.HawkSports.dao;
 
-import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -11,15 +10,13 @@ public class ClienteDAO {
 	EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 	Cliente cliente = new Cliente();
 
-	public void guardar(Cliente cliente) {
+	public void agregar(Cliente cliente) {
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.persist(cliente);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -29,10 +26,6 @@ public class ClienteDAO {
 			List<Cliente> lista_clientes;
 			Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.estado = TRUE");
 			lista_clientes = query.getResultList();
-			Iterator<Cliente> iterator = lista_clientes.iterator();
-			while (iterator.hasNext()) {
-				System.out.println(iterator.next());
-			}
 			return lista_clientes;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,8 +40,6 @@ public class ClienteDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -59,8 +50,6 @@ public class ClienteDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -72,21 +61,6 @@ public class ClienteDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
-		}
-	}
-
-	public void pre_eliminar(Short idCliente) {
-		try {
-			Cliente cliente = entityManager.find(Cliente.class, idCliente);
-			entityManager.getTransaction().begin();
-			cliente.setEstado(false);
-			entityManager.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 }

@@ -11,15 +11,13 @@ public class DireccionDAO {
 	EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 	Direccion direccion = new Direccion();
 	
-	public void guardar(Direccion direccion) {
+	public void agregar(Direccion direccion) {
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.persist(direccion);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -47,8 +45,6 @@ public class DireccionDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -59,8 +55,6 @@ public class DireccionDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
 
@@ -72,21 +66,12 @@ public class DireccionDAO {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
 		}
 	}
-
-	public void pre_eliminar(Short idDireccion) {
-		try {
-			direccion = entityManager.find(Direccion.class, idDireccion);
-			entityManager.getTransaction().begin();
-			direccion.setEstado(false);
-			entityManager.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JPAUtil.shutdown();
-		}
+	
+	public Short ultimo_id() {
+		Query query = entityManager.createQuery("SELECT MAX(d.idDireccion) FROM Direccion d");
+		Short id = (Short) query.getSingleResult();
+		return id;
 	}
 }

@@ -13,11 +13,10 @@ import com.HawkSports.model.Categoria;
 public class CategoriaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private CategoriaDAO categoriaDAO;
     private List<Categoria> listaCategorias = new ArrayList<Categoria>();
 
     public List<Categoria> getListaCategorias() {
-        categoriaDAO = new CategoriaDAO();
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
         listaCategorias = categoriaDAO.consultar();
         return listaCategorias;
     }

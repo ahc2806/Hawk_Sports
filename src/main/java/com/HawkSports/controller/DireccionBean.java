@@ -13,12 +13,11 @@ import com.HawkSports.model.Direccion;
 public class DireccionBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private DireccionDAO direccion;
 	private List<Direccion> listaDirecciones = new ArrayList<Direccion>();
 
 	public List<Direccion> getListaDirecciones() {
-		direccion = new DireccionDAO();
-		listaDirecciones = direccion.consultar();
+		DireccionDAO direccionDAO = new DireccionDAO();
+		listaDirecciones = direccionDAO.consultar();
 		return listaDirecciones;
 	}
 
