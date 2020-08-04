@@ -9,9 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import com.HawkSports.dao.CategoriaDAO;
-import com.HawkSports.dao.ProductoDAO;
 import com.HawkSports.model.Categoria;
-import com.HawkSports.model.Producto;
 
 @Named
 @RequestScoped
@@ -41,6 +39,4 @@ public class CategoriaBean implements Serializable {
 		categoriaDAO.agregar(categoria);
 		return "categorias.xhtml?faces-redirect=true\"";
 	}
-
 }
-

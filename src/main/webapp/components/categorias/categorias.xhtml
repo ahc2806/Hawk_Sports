@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<htmlxmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
        	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link type="text/css" rel="stylesheet" href="../../assets/css/materialize.min.css" media="screen,projection" />
@@ -9,7 +8,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Hawk Sports - Proveedores</title>
+        <title>Hawk Sports - Categorías</title>
     </h:head>
 
     <h:body>
@@ -32,7 +31,7 @@
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/home.png" alt="Inicio" width="35px"/>
-	                    <a href="menu.xhtml">Inicio</a>
+	                    <a href="../menu/menu.xhtml">Inicio</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/empleados.png" alt="Empleados" width="35px"/>
@@ -54,13 +53,13 @@
 	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
 	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
+					<li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
+	                    <a href="categorias.xhtml">Categorías</a>
+	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
 	                    <a>Ventas</a>
-	                </li>
-	                <li class="sidenav-close">
-	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
-	                    <a href="../Categoria/categorias.xhtml">Categorias</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/reportes.png" alt="Reportes" width="35px"/>
@@ -71,50 +70,59 @@
 	                    <a>Configuraciones</a>
 	                </li>
 	            </ul>
-	            <a href="#" class="brand-logo center white-text" id="titulo">Categorias</a>
+	            <a href="#" class="brand-logo center white-text" id="titulo">Categorías</a>
 	            <h:commandButton id="salir" action="#{usuarioBean.cerrar()}" style="display: none"></h:commandButton>
 		        <button class="btn-large waves-effect waves-light right btnSalir" type="submit" id="frm:salir" name="frm:salir">
 		        	Cerrar sesión<i class="material-icons right">account_circle</i>
 		        </button>
 	        </h:form>
         </nav>				
-				
 		
 		<div class="container">
 			<div class="row">
-				<div class="col s12">
-					<h:form class="frm3">
-						<div class="row">
-							<div class="col s12 left">
-			                	<h5>Datos de categoria</h5>
-			                </div>
-							<div class="col s4">
-								<label class="campos" for="categoria">Categoria:</label>
-								<input type="text" id="categoria" name="categoria" placeholder="Acsesorios"
-								jsf:value="#{categoria.nombre}" required="TRUE" class="validate"/>
-							</div>
-						
-						</div>
-						
-						
-						<div class="row">
-							<div class="col s2">
-								<h:commandButton id="guardar" action="#{categoriaBean.agregar(categoria)}" style="display: none"/>
-								<button class="btn waves-effect waves-light" type="submit" id="frm3:guardar" name="frm3:guardar">
-									Guardar<i class="material-icons right">send</i>
-								</button>
-							</div>
-							<div class="col s2">
-								<a class="btn waves-effect waves-light red darken-4" href="categorias.xhtml">
-									Cancelar<i class="material-icons right">cancel</i>
-								</a>
-							</div>
-						</div>
+				<div class="col s3">
+				<h:form id="frm1">
+					<br/>
+					<h:commandButton id="nuevo" action="#{categoriaBean.nuevo()}" style="display: none" />
+						<button class="btn waves-effect waves-light" type="submit" id="frm1:nuevo" name="frm1:nuevo">
+				        	Nuevo<i class="material-icons right">add_circle</i>
+				        </button>
 					</h:form>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col s12">
+					<table class="responsive-table highlight centered" >
+				    	<thead class="light-blue darken-1">
+							<tr>
+				              	<th class="white-text">Nombre de la categoría</th>
+				              	<th class="white-text" colspan="2">Opciones</th>
+				          	</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="#{categoriaBean.listaCategorias}" var="categoria">
+								<tr>
+									<td>#{categoria.nombre}</td>
+			                        <td>
+			                        	<a class="btn waves-effect waves-light">
+			                            	<i class="material-icons">create</i>
+			                            </a>
+			                        </td>
+			                        <td>
+			                        	<a class="btn waves-effect waves-light red darken-4">
+			                            	<i class="material-icons">delete</i>
+			                            </a>
+			                    	</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-		<script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+		
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script src="../../assets/js/panel_principal.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </h:body>
