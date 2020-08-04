@@ -35,6 +35,7 @@ public class CategoriaDAO {
 
 	public Categoria consultarId(Short idCategoria) {
 		try {
+			Categoria categoria = new Categoria();
 			categoria = entityManager.find(Categoria.class, idCategoria);
 			return categoria;
 		} catch (Exception e) {

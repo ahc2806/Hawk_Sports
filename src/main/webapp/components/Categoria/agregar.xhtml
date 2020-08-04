@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xxmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<htmlxmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
        	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link type="text/css" rel="stylesheet" href="../../assets/css/materialize.min.css" media="screen,projection" />
@@ -85,11 +86,12 @@
 					<h:form class="frm3">
 						<div class="row">
 							<div class="col s12 left">
-			                	<h5>Datos del usuario</h5>
+			                	<h5>Datos de categoria</h5>
 			                </div>
 							<div class="col s4">
 								<label class="campos" for="categoria">Categoria:</label>
-								<input type="text" id="categoria" name="categoria" placeholder="Acsesorios"/>
+								<input type="text" id="categoria" name="categoria" placeholder="Acsesorios"
+								jsf:value="#{categoria.nombre}" required="TRUE" class="validate"/>
 							</div>
 						
 						</div>
