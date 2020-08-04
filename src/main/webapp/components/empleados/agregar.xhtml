@@ -54,6 +54,10 @@
 	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
 	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
+	                    <a href="../categorias/categorias.xhtml">Categorías</a>
+	                </li>
+	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
 	                    <a>Ventas</a>
 	                </li>
@@ -95,7 +99,7 @@
 							<div class="col s4">
 								<label class="campos" for="apellidoM">Apellido Materno:</label>
 								<input type="text" id="apellidoM" name="apellidoM" placeholder="Segundo Apellido"
-								jsf:value="#{empleado.apellidoM}" required="FALSE" class="validate" />
+								jsf:value="#{empleado.apellidoM}" class="validate" />
 							</div>
 						</div>
 						
@@ -113,20 +117,21 @@
 			                	<h:selectOneMenu class="browser-default grey lighten-3" value="#{direccion.entidadF}">
 			                		<f:selectItem itemLabel="Aguascalientes" itemValue="Aguascalientes" />
 			                		<f:selectItem itemLabel="Baja California" itemValue="Baja California" />
-			                		<f:selectItem itemLabel="Baja California Sur" itemValue="Aguascalientes Sur" />
+			                		<f:selectItem itemLabel="Baja California Sur" itemValue="Baja California Sur" />
+			                		<f:selectItem itemLabel="Campeche" itemValue="Campeche" />
 			                		<f:selectItem itemLabel="Chiapas" itemValue="Chiapas" />
 			                		<f:selectItem itemLabel="Chihuahua" itemValue="Chihuahua" />
-			                		<f:selectItem itemLabel="Ciudad de México" itemValue="Ciudad de México" />
-			                		<f:selectItem itemLabel="Coahuila" itemValue="Coahuila" />
+			                		<f:selectItem itemLabel="Coahuila" itemValue="Coahuila de Zaragoza" />
 			                		<f:selectItem itemLabel="Colima" itemValue="Colima" />
 			                		<f:selectItem itemLabel="Durango" itemValue="Durango" />
-			                		<f:selectItem itemLabel="Guerrero" itemValue="Guerrero" />
+			                		<f:selectItem itemLabel="Estado de México" itemValue="Estado de México" />
 			                		<f:selectItem itemLabel="Guanajuato" itemValue="Guanajuato" />
+			                		<f:selectItem itemLabel="Guerrero" itemValue="Guerrero" />
 			                		<f:selectItem itemLabel="Hidalgo" itemValue="Hidalgo" />
 			                		<f:selectItem itemLabel="Jalisco" itemValue="Jalisco" />
-			                		<f:selectItem itemLabel="México" itemValue="México" />
-			                		<f:selectItem itemLabel="Michoacán" itemValue="Michoacán" />
+			                		<f:selectItem itemLabel="Michoacán de Ocampo" itemValue="Michoacán de Ocampo" />
 			                		<f:selectItem itemLabel="Morelos" itemValue="Morelos" />
+			                		<f:selectItem itemLabel="Nayarit" itemValue="Nayarit" />
 			                		<f:selectItem itemLabel="Nuevo León" itemValue="Nuevo León" />
 			                		<f:selectItem itemLabel="Oaxaca" itemValue="Oaxaca" />
 			                		<f:selectItem itemLabel="Puebla" itemValue="Puebla" />
