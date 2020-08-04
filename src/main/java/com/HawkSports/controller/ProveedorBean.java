@@ -52,17 +52,23 @@ public class ProveedorBean implements Serializable {
 		return "proveedores.xhtml?faces-redirect=true\"";
 	}
 	
-	public String editar(Short idProveedor) {
+	public String editar(Short idProveedor, Short idDireccion) {
+		DireccionDAO direccionDAO = new DireccionDAO();
 		ProveedorDAO proveedorDAO = new ProveedorDAO();
+		Direccion direccion = new Direccion();
 		Proveedor proveedor= new Proveedor();
+		direccion = direccionDAO.consultarId(idDireccion);
 		proveedor = proveedorDAO.consultarId(idProveedor);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sessionMap.put("direccion", direccion);
 		sessionMap.put("proveedor", proveedor);
 		return "editar.xhtml?faces-redirect=true\"";
 	}
 
-	public String actualizar(Proveedor proveedor) {
+	public String actualizar(Proveedor proveedor, Direccion direccion) {
+		DireccionDAO direccionDAO =new DireccionDAO();
 		ProveedorDAO proveedorDAO = new ProveedorDAO();
+		direccionDAO.editar(direccion);
 		proveedorDAO.editar(proveedor);
 		return "proveedores.xhtml?faces-redirect=true\"";
 	}

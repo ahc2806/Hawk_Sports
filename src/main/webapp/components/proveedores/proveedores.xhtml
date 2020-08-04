@@ -92,6 +92,7 @@
 			</div>
 			
 			<div class="row">
+			 <h:form>
 				<div class="col s12">
 					<table class="responsive-table highlight centered" >
 				    	<thead class="light-blue darken-1">
@@ -111,7 +112,7 @@
 									<td>#{proveedor.telefono}</td>
 									<td>#{proveedor.correoE}</td>
 									<td>
-				                        <h:commandButton id="editar" action="#{proveedorBean.editar(idProveedor)}" 
+				                        <h:commandButton id="editar" action="#{proveedorBean.editar(proveedor.idProveedor, proveedor.idDireccion)}" 
 										class="btn waves-effect waves-light amber darken-4" value="Editar" />
 				                    </td>
 			                        <td>
@@ -123,6 +124,7 @@
 						</tbody>
 					</table>
 				</div>
+				</h:form>
 			</div>
 		</div>
 
