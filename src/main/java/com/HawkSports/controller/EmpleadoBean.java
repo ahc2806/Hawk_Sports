@@ -52,17 +52,23 @@ public class EmpleadoBean implements Serializable {
 		return "empleados.xhtml?faces-redirect=true\"";
 	}
 	
-	public String editar(Short idEmpleado) {
+	public String editar(Short idEmpleado, Short idDireccion) {
+		DireccionDAO direccionDAO = new DireccionDAO();
 		EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+		Direccion direccion = new Direccion();
 		Empleado empleado = new Empleado();
+		direccion = direccionDAO.consultarId(idDireccion);
 		empleado = empleadoDAO.consultarId(idEmpleado);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sessionMap.put("direccion", direccion);
 		sessionMap.put("empleado", empleado);
 		return "editar.xhtml?faces-redirect=true\"";
 	}
 
-	public String actualizar(Empleado empleado) {
+	public String actualizar(Empleado empleado, Direccion direccion) {
+		DireccionDAO direccionDAO = new DireccionDAO();
 		EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+		direccionDAO.editar(direccion);
 		empleadoDAO.editar(empleado);
 		return "empleados.xhtml?faces-redirect=true\"";
 	}

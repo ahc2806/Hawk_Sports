@@ -215,10 +215,35 @@ INSERT INTO producto(sku, descripcion, precio_compra, precio_venta, existencia, 
 INSERT INTO producto(sku, descripcion, precio_compra, precio_venta, existencia, imagen, id_categoria) VALUES ('1088', 'Tennis puma', 800.0, 850.0, 20, 'tennisPuma.jpg', 2);
 
 -- 2) INDICES 
-	CREATE INDEX i_tipo_usuario ON usuario(tipo);
-	CREATE INDEX i_puesto_empleado ON empleado(puesto);
-	CREATE INDEX i_nombre_proveedor ON proveedor(nombre);
-	CREATE INDEX i_nombre_cliente ON cliente(nombre);
-	CREATE INDEX i_entidad_f ON direccion(entidad_f);
-	CREATE UNIQUE INDEX i_sku ON producto(sku);
-	CREATE INDEX i_nombre_categoria ON categoria(nombre);
+CREATE INDEX i_tipo_usuario ON usuario(tipo);
+CREATE INDEX i_puesto_empleado ON empleado(puesto);
+CREATE INDEX i_nombre_proveedor ON proveedor(nombre);
+CREATE INDEX i_nombre_cliente ON cliente(nombre);
+CREATE INDEX i_entidad_f ON direccion(entidad_f);
+CREATE UNIQUE INDEX i_sku ON producto(sku);
+CREATE INDEX i_nombre_categoria ON categoria(nombre);
+
+-- 3) TRIGGERS
+DROP TRIGGER elimina_direccion_al_actualizar_empleado;
+DELIMITER $$
+    CREATE TRIGGER elimina_direccion_al_actualizar_empleado AFTER UPDATE ON empleado FOR EACH ROW
+    BEGIN
+        UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
+    END
+$$
+
+DROP TRIGGER elimina_direccion_al_actualizar_cliente;
+DELIMITER $$
+    CREATE TRIGGER elimina_direccion_al_actualizar_cliente AFTER UPDATE ON cliente FOR EACH ROW
+    BEGIN
+        UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
+    END
+$$
+
+DROP TRIGGER elimina_direccion_al_actualizar_proveedor;
+DELIMITER $$
+    CREATE TRIGGER elimina_direccion_al_actualizar_proveedor AFTER UPDATE ON proveedor FOR EACH ROW
+    BEGIN
+        UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
+    END
+$$

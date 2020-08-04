@@ -8,7 +8,8 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hawk Sports - Proveedores </title>
+
+        <title>Hawk Sports - Proveedores</title>
     </h:head>
 
     <h:body>
@@ -35,7 +36,7 @@
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/empleados.png" alt="Empleados" width="35px"/>
-	                    <a href="empleados.xhtml">Empleados</a>
+	                    <a href="../empleados/empleados.xhtml">Empleados</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/usuarios.png" alt="Usuarios" width="35px"/>
@@ -47,19 +48,19 @@
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/proveedores.png" alt="Proveedores" width="35px"/>
-	                    <a href="../proveedores/proveedores.xhtml">Proveedores</a>
+	                    <a href="proveedores.xhtml">Proveedores</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
 	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
+					<li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
+	                    <a href="../categorias/categorias.xhtml">Categorías</a>
+	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
 	                    <a>Ventas</a>
-	                </li>
-	                <li class="sidenav-close">
-	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
-	                    <a href="../Categoria/categorias.xhtml">Categorias</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/reportes.png" alt="Reportes" width="35px"/>
@@ -99,7 +100,7 @@
 							<div class="col s4">
 								<label class="campos" for="apellidoM">Apellido Materno:</label>
 								<input type="text" id="apellidoM" name="apellidoM" placeholder="Segundo Apellido"
-								jsf:value="#{proveedor.apellidoM}" required="FALSE" class="validate"/>
+								jsf:value="#{proveedor.apellidoM}" class="validate"/>
 							</div>
 							<div class="col s4">
 								<label class="campos" for="rfc">RFC:</label>
@@ -122,20 +123,21 @@
 			                	<h:selectOneMenu class="browser-default grey lighten-3" value="#{direccion.entidadF}">
 			                		<f:selectItem itemLabel="Aguascalientes" itemValue="Aguascalientes" />
 			                		<f:selectItem itemLabel="Baja California" itemValue="Baja California" />
-			                		<f:selectItem itemLabel="Baja California Sur" itemValue="Aguascalientes Sur" />
+			                		<f:selectItem itemLabel="Baja California Sur" itemValue="Baja California Sur" />
+			                		<f:selectItem itemLabel="Campeche" itemValue="Campeche" />
 			                		<f:selectItem itemLabel="Chiapas" itemValue="Chiapas" />
 			                		<f:selectItem itemLabel="Chihuahua" itemValue="Chihuahua" />
-			                		<f:selectItem itemLabel="Ciudad de México" itemValue="Ciudad de México" />
-			                		<f:selectItem itemLabel="Coahuila" itemValue="Coahuila" />
+			                		<f:selectItem itemLabel="Coahuila" itemValue="Coahuila de Zaragoza" />
 			                		<f:selectItem itemLabel="Colima" itemValue="Colima" />
 			                		<f:selectItem itemLabel="Durango" itemValue="Durango" />
-			                		<f:selectItem itemLabel="Guerrero" itemValue="Guerrero" />
+			                		<f:selectItem itemLabel="Estado de México" itemValue="Estado de México" />
 			                		<f:selectItem itemLabel="Guanajuato" itemValue="Guanajuato" />
+			                		<f:selectItem itemLabel="Guerrero" itemValue="Guerrero" />
 			                		<f:selectItem itemLabel="Hidalgo" itemValue="Hidalgo" />
 			                		<f:selectItem itemLabel="Jalisco" itemValue="Jalisco" />
-			                		<f:selectItem itemLabel="México" itemValue="México" />
-			                		<f:selectItem itemLabel="Michoacán" itemValue="Michoacán" />
+			                		<f:selectItem itemLabel="Michoacán de Ocampo" itemValue="Michoacán de Ocampo" />
 			                		<f:selectItem itemLabel="Morelos" itemValue="Morelos" />
+			                		<f:selectItem itemLabel="Nayarit" itemValue="Nayarit" />
 			                		<f:selectItem itemLabel="Nuevo León" itemValue="Nuevo León" />
 			                		<f:selectItem itemLabel="Oaxaca" itemValue="Oaxaca" />
 			                		<f:selectItem itemLabel="Puebla" itemValue="Puebla" />
@@ -183,7 +185,7 @@
 								<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000"
 								jsf:value="#{proveedor.telefono}" required="TRUE" class="validate"/>
 							</div>
-							<div class="col s6">
+							<div class="col s4">
 								<label class="campos" for="correoE">Correo:</label>
 								<input type="email" id="correoE" name="correoE" placeholder="example@hotmail.com"
 								jsf:value="#{proveedor.correoE}" required="TRUE" class="validate"/>

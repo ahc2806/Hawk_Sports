@@ -96,6 +96,7 @@
 					<table class="responsive-table highlight centered" >
 				    	<thead class="light-blue darken-1">
 							<tr>
+								<th class="white-text">#</th>
 				              	<th class="white-text">Nombre de la categoría</th>
 				              	<th class="white-text" colspan="2">Opciones</th>
 				          	</tr>
@@ -103,17 +104,16 @@
 						<tbody>
 							<c:forEach items="#{categoriaBean.listaCategorias}" var="categoria">
 								<tr>
+									<td>#{categoria.idCategoria}</td>
 									<td>#{categoria.nombre}</td>
 			                        <td>
-			                        	<a class="btn waves-effect waves-light">
-			                            	<i class="material-icons">create</i>
-			                            </a>
-			                        </td>
+				                        <h:commandButton id="editar" action="#{categoriaBean.editar(idCategoria)}" 
+										class="btn waves-effect waves-light amber darken-4" value="Editar" />
+				                    </td>
 			                        <td>
-			                        	<a class="btn waves-effect waves-light red darken-4">
-			                            	<i class="material-icons">delete</i>
-			                            </a>
-			                    	</td>
+			                        	<h:commandButton id="eliminar" action="#{categoriaBean.eliminar(categoria.idCategoria)}" 
+										class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
+				                    </td>
 								</tr>
 							</c:forEach>
 						</tbody>
