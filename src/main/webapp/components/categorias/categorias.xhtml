@@ -92,33 +92,35 @@
 			</div>
 			
 			<div class="row">
-				<div class="col s12">
-					<table class="responsive-table highlight centered" >
-				    	<thead class="light-blue darken-1">
-							<tr>
-								<th class="white-text">#</th>
-				              	<th class="white-text">Nombre de la categoría</th>
-				              	<th class="white-text" colspan="2">Opciones</th>
-				          	</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="#{categoriaBean.listaCategorias}" var="categoria">
+				<h:form>
+					<div class="col s12">
+						<table class="responsive-table highlight centered" >
+					    	<thead class="light-blue darken-1">
 								<tr>
-									<td>#{categoria.idCategoria}</td>
-									<td>#{categoria.nombre}</td>
-			                        <td>
-				                        <h:commandButton id="editar" action="#{categoriaBean.editar(idCategoria)}" 
-										class="btn waves-effect waves-light amber darken-4" value="Editar" />
-				                    </td>
-			                        <td>
-			                        	<h:commandButton id="eliminar" action="#{categoriaBean.eliminar(categoria.idCategoria)}" 
-										class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
-				                    </td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+									<th class="white-text">#</th>
+					              	<th class="white-text">Nombre de la categoría</th>
+					              	<th class="white-text" colspan="2">Opciones</th>
+					          	</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="#{categoriaBean.listaCategorias}" var="categoria">
+									<tr>
+										<td>#{categoria.idCategoria}</td>
+										<td>#{categoria.nombre}</td>
+				                        <td>
+					                        <h:commandButton id="editar" action="#{categoriaBean.editar(categoria.idCategoria)}" 
+											class="btn waves-effect waves-light amber darken-4" value="Editar" />
+					                    </td>
+				                        <td>
+				                        	<h:commandButton id="eliminar" action="#{categoriaBean.eliminar(categoria.idCategoria)}" 
+											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
+					                    </td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</h:form>
 			</div>
 		</div>
 		

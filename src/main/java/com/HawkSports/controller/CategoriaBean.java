@@ -39,4 +39,28 @@ public class CategoriaBean implements Serializable {
 		categoriaDAO.agregar(categoria);
 		return "categorias.xhtml?faces-redirect=true\"";
 	}
+    
+    public String editar(Short idCategoria) {
+    	CategoriaDAO categoriaDAO = new CategoriaDAO();
+    	Categoria categoria = new Categoria();
+    	categoria = categoriaDAO.consultarId(idCategoria);
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sessionMap.put("categoria", categoria);
+		return "editar.xhtml?faces-redirect=true\"";
+	}
+
+	public String actualizar(Categoria categoria) {
+		CategoriaDAO categoriaDAO = new CategoriaDAO();
+		categoriaDAO.editar(categoria);
+		return "categorias.xhtml?faces-redirect=true\"";
+	}
+	
+	public String eliminar(Short idCategoria) {	
+		CategoriaDAO categoriaDAO = new CategoriaDAO();
+		Categoria categoria = new Categoria();
+		categoria = categoriaDAO.consultarId(idCategoria);
+		categoria.setEstado(false);		
+		categoriaDAO.editar(categoria);
+		return "categorias.xhtml?faces-redirect=true\"";
+	}
 }
