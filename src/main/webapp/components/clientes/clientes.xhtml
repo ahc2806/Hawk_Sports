@@ -111,13 +111,13 @@
 									<td>#{cliente.telefono}</td>
 									<td>#{cliente.correoE}</td>
 									<td>
-			                        	<h:commandButton id="editar" action="#{clienteBean.editar(cliente.idCliente)}" 
-										class="btn waves-effect waves-light amber darken-4" value="Editar" />
-			                        </td>
+			                        	<h:commandButton id="editar" action="#{clienteBean.editar(cliente.idCliente, cliente.idDireccion)}" 
+											class="btn waves-effect waves-light amber darken-4" value="Editar" />
+				                        </td>
 			                        <td>
 			                        	<h:commandButton id="eliminar" action="#{clienteBean.eliminar(cliente.idCliente)}" 
-										class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
-			                    	</td>
+											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
+				                    	</td>
 								</tr>
 							</c:forEach>
 						</tbody>
