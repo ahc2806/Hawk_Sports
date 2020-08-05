@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import com.HawkSports.model.JPAUtil;
 import com.HawkSports.model.Usuario;
 
@@ -72,7 +73,6 @@ public class UsuarioDAO {
                 "SELECT u.usuario, u.contrasena FROM Usuario u WHERE u.usuario LIKE :usuario and u.contrasena LIKE :contrasena");
         query.setParameter("usuario", usuario);
         query.setParameter("contrasena", contrasena);
-
         List<String> dato = query.getResultList();
         if (!dato.isEmpty()) 
             return true;
@@ -80,10 +80,3 @@ public class UsuarioDAO {
         	return false;
     }
 }
-
-
-
-
-
-
-

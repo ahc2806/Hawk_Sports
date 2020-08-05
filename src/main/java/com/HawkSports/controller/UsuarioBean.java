@@ -3,6 +3,7 @@ package com.HawkSports.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -52,6 +53,7 @@ public class UsuarioBean implements Serializable {
         if (valido) {
             HttpSession session = SesionUtils.getSession();
             session.setAttribute("usuario", usuario);
+            session.setAttribute("contrasena", contrasena);
             return "components/menu/menu.xhtml?faces-redirect=true\"";
         } else {
         	return "/index.xhtml?faces-redirect=true\"";
@@ -64,5 +66,3 @@ public class UsuarioBean implements Serializable {
         return "/index.xhtml?faces-redirect=true\"";
     }
 }
-
-
