@@ -12,7 +12,7 @@ public class UsuarioDAO {
     EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
     Usuario usuario = new Usuario();
 
-    public void guardar(Usuario usuario) {
+    public void agregar(Usuario usuario) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(usuario);
