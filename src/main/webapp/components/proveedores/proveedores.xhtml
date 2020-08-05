@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>Hawk Sports - Proveedores</title>
     </h:head>
 
@@ -92,38 +91,38 @@
 			</div>
 			
 			<div class="row">
-			 <h:form>
-				<div class="col s12">
-					<table class="responsive-table highlight centered" >
-				    	<thead class="light-blue darken-1">
-				        	<tr>
-				        		<th class="white-text">RFC</th>
-				            	<th class="white-text">Nombre completo</th>
-				              	<th class="white-text">Teléfono</th>
-				              	<th class="white-text">Correo</th>
-				              	<th class="white-text" colspan="2">Opciones</th>
-				          	</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="#{proveedorBean.listaProveedores}" var="proveedor">
-								<tr>
-									<td>#{proveedor.rfc}</td>
-									<td>#{proveedor.nombre} #{proveedor.apellidoP} #{proveedor.apellidoM}</td>
-									<td>#{proveedor.telefono}</td>
-									<td>#{proveedor.correoE}</td>
-									<td>
-				                        <h:commandButton id="editar" action="#{proveedorBean.editar(proveedor.idProveedor, proveedor.idDireccion)}" 
-										class="btn waves-effect waves-light amber darken-4" value="Editar" />
-				                    </td>
-			                        <td>
-			                        	<h:commandButton id="eliminar" action="#{proveedorBean.eliminar(proveedor.idProveedor)}" 
-										class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
-				                    </td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+				<h:form>
+					<div class="col s12">
+						<table class="responsive-table highlight centered" >
+					    	<thead class="light-blue darken-1">
+					        	<tr>
+					        		<th class="white-text">RFC</th>
+					            	<th class="white-text">Nombre completo</th>
+					              	<th class="white-text">Teléfono</th>
+					              	<th class="white-text">Correo</th>
+					              	<th class="white-text" colspan="2">Opciones</th>
+					          	</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="#{proveedorBean.listaProveedores}" var="proveedor">
+									<tr>
+										<td>#{proveedor.rfc}</td>
+										<td>#{proveedor.nombre} #{proveedor.apellidoP} #{proveedor.apellidoM}</td>
+										<td>#{proveedor.telefono}</td>
+										<td>#{proveedor.correoE}</td>
+										<td>
+					                        <h:commandButton id="editar" action="#{proveedorBean.editar(proveedor.idProveedor, proveedor.idDireccion)}" 
+											class="btn waves-effect waves-light amber darken-4" value="Editar" />
+					                    </td>
+				                        <td>
+				                        	<h:commandButton id="eliminar" action="#{proveedorBean.eliminar(proveedor.idProveedor)}" 
+											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
+					                    </td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</h:form>
 			</div>
 		</div>

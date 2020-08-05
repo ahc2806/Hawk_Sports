@@ -10,9 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import com.HawkSports.dao.DireccionDAO;
 import com.HawkSports.dao.UsuarioDAO;
-import com.HawkSports.model.Direccion;
 import com.HawkSports.model.Usuario;
 
 @Named
@@ -71,43 +69,30 @@ public class UsuarioBean implements Serializable {
     }
 
     public String nuevo() {
-		Direccion direccion = new Direccion();
 		Usuario usuario = new Usuario();
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		sessionMap.put("direccion", direccion);
 		sessionMap.put("usuario", usuario);
 		return "agregar.xhtml?faces-redirect=true\"";
 	}
 
-	public String agregar(Usuario usuario, Direccion direccion){
-		DireccionDAO direccionDAO = new DireccionDAO();
+	public String agregar(Usuario usuario){
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		direccion.setEstado(true);
-		direccionDAO.agregar(direccion);
-		Short idDireccion = direccionDAO.ultimo_id();
-		usuario.setIdDireccion(idDireccion);
 		usuario.setEstado(true);
 		usuarioDAO.agregar(usuario);
 		return "usuarios.xhtml?faces-redirect=true\"";
 	}
 	
-	public String editar(Short idUsuario, Short idDireccion) {
-		DireccionDAO direccionDAO = new DireccionDAO();
+	public String editar(Short idUsuario) {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Direccion direccion = new Direccion();
 		Usuario usuario = new Usuario();
-		direccion = direccionDAO.consultarId(idDireccion);
 		usuario = usuarioDAO.consultarId(idUsuario);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		sessionMap.put("direccion", direccion);
 		sessionMap.put("usuario", usuario);
 		return "editar.xhtml?faces-redirect=true\"";
 	}
 
-	public String actualizar(Usuario usuario, Direccion direccion) {
-		DireccionDAO direccionDAO = new DireccionDAO();
+	public String actualizar(Usuario usuario) {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		direccionDAO.editar(direccion);
 		usuarioDAO.editar(usuario);
 		return "usuarios.xhtml?faces-redirect=true\"";
 	}

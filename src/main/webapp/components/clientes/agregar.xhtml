@@ -8,8 +8,7 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>Hawk Sports - Cliente</title>
+        <title>Hawk Sports - Clientes</title>
     </h:head>
 
     <h:body>
@@ -54,6 +53,10 @@
 	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
 	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
+	                 <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
+	                    <a href="../categorias/categorias.xhtml">Categorías</a>
+	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
 	                    <a>Ventas</a>
@@ -78,26 +81,30 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12">
-					<form class="formulario">
+					<h:form class="frm3">
 						<div class="row">
 							<div class="col s12 left">
 			                	<h5>Datos generales</h5>
 			                </div>
 							<div class="col s4">
 								<label class="campos" for="nombre">Nombre:</label>
-								<input type="text" id="nombre" name="nombre" placeholder="Nombre(s)"/>
+								<input type="text" id="nombre" name="nombre" placeholder="Nombre(s)"
+								jsf:value="#{cliente.nombre}" required="TRUE" class="validate" />
 							</div>
 							<div class="col s4">
 								<label class="campos" for="apellidoP">Apellido Paterno:</label>
-								<input type="text" id="apellidoP" name="apellidoP" placeholder="Primer Apellido"/>
+								<input type="text" id="apellidoP" name="apellidoP" placeholder="Primer Apellido"
+								jsf:value="#{cliente.apellidoP}" required="TRUE" class="validate" />
 							</div>
 							<div class="col s4">
 								<label class="campos" for="apellidoM">Apellido Materno:</label>
-								<input type="text" id="apellidoM" name="apellidoM" placeholder="Segundo Apellido"/>
+								<input type="text" id="apellidoM" name="apellidoM" placeholder="Segundo Apellido"
+								jsf:value="#{cliente.apellidoM}" class="validate" />
 							</div>
 							<div class="col s4">
 								<label class="campos" for="rfc">RFC:</label>
-								<input type="text" id="rfc" name="rfc" placeholder="EXAM990101PLE"/>
+								<input type="text" id="rfc" name="rfc" placeholder="EXAM990101PLE" 
+								jsf:value="#{cliente.rfc}" required="TRUE" class="validate" />
 							</div>
 						</div>
 						
@@ -115,20 +122,21 @@
 			                	<h:selectOneMenu class="browser-default grey lighten-3" value="#{direccion.entidadF}">
 			                		<f:selectItem itemLabel="Aguascalientes" itemValue="Aguascalientes" />
 			                		<f:selectItem itemLabel="Baja California" itemValue="Baja California" />
-			                		<f:selectItem itemLabel="Baja California Sur" itemValue="Aguascalientes Sur" />
+			                		<f:selectItem itemLabel="Baja California Sur" itemValue="Baja California Sur" />
+			                		<f:selectItem itemLabel="Campeche" itemValue="Campeche" />
 			                		<f:selectItem itemLabel="Chiapas" itemValue="Chiapas" />
 			                		<f:selectItem itemLabel="Chihuahua" itemValue="Chihuahua" />
-			                		<f:selectItem itemLabel="Ciudad de México" itemValue="Ciudad de México" />
-			                		<f:selectItem itemLabel="Coahuila" itemValue="Coahuila" />
+			                		<f:selectItem itemLabel="Coahuila" itemValue="Coahuila de Zaragoza" />
 			                		<f:selectItem itemLabel="Colima" itemValue="Colima" />
 			                		<f:selectItem itemLabel="Durango" itemValue="Durango" />
-			                		<f:selectItem itemLabel="Guerrero" itemValue="Guerrero" />
+			                		<f:selectItem itemLabel="Estado de México" itemValue="Estado de México" />
 			                		<f:selectItem itemLabel="Guanajuato" itemValue="Guanajuato" />
+			                		<f:selectItem itemLabel="Guerrero" itemValue="Guerrero" />
 			                		<f:selectItem itemLabel="Hidalgo" itemValue="Hidalgo" />
 			                		<f:selectItem itemLabel="Jalisco" itemValue="Jalisco" />
-			                		<f:selectItem itemLabel="México" itemValue="México" />
-			                		<f:selectItem itemLabel="Michoacán" itemValue="Michoacán" />
+			                		<f:selectItem itemLabel="Michoacán de Ocampo" itemValue="Michoacán de Ocampo" />
 			                		<f:selectItem itemLabel="Morelos" itemValue="Morelos" />
+			                		<f:selectItem itemLabel="Nayarit" itemValue="Nayarit" />
 			                		<f:selectItem itemLabel="Nuevo León" itemValue="Nuevo León" />
 			                		<f:selectItem itemLabel="Oaxaca" itemValue="Oaxaca" />
 			                		<f:selectItem itemLabel="Puebla" itemValue="Puebla" />
@@ -158,7 +166,7 @@
 			                <div class="col s4">
 			                	<label class="campos" for="numero">Número Exterior:</label>
 			                	<input type="text" id="numero" name="numero" placeholder="Ingrese su número exterior"
-			                	jsf:value="#{direccion.numero}" required="FALSE" class="validate"/>
+			                	jsf:value="#{direccion.numero}" class="validate"/>
 			                </div>
 			                <div class="col s4">
 			                	<label class="campos" for="calle">Calle:</label>
@@ -172,12 +180,14 @@
 			                	<h5>Datos de contacto</h5>
 			                </div>
 		                	<div class="col s4">
-								<label class="campos" for="telefono">Telefono:</label>
-								<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000"/>
+								<label class="campos" for="telefono">Teléfono:</label>
+								<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000" 
+								jsf:value="#{cliente.telefono}" required="TRUE" class="validate" />
 							</div>
-							<div class="col s6">
+							<div class="col s4">
 								<label class="campos" for="correoE">Correo:</label>
-								<input type="email" id="correoE" name="correoE" placeholder="example@hotmail.com"/>
+								<input type="email" id="correoE" name="correoE" placeholder="example@hotmail.com"
+								jsf:value="#{cliente.correoE}" required="TRUE" class="validate" />
 							</div>
 						</div>
 						
@@ -194,7 +204,7 @@
 								</a>
 							</div>
 						</div>
-					</form>
+					</h:form>
 				</div>
 			</div>
 		</div>

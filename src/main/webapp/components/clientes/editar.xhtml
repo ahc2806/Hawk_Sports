@@ -53,6 +53,10 @@
 	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
 	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
+	                 <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
+	                    <a href="../categorias/categorias.xhtml">Categorías</a>
+	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
 	                    <a>Ventas</a>
@@ -66,24 +70,25 @@
 	                    <a>Configuraciones</a>
 	                </li>
 	            </ul>
-	            <a href="#" class="brand-logo center white-text" id="titulo">Editar Producto</a>
+	            <a href="#" class="brand-logo center white-text" id="titulo">Nuevo Cliente</a>
 	            <h:commandButton id="salir" action="#{usuarioBean.cerrar()}" style="display: none"></h:commandButton>
 		        <button class="btn-large waves-effect waves-light right btnSalir" type="submit" id="frm:salir" name="frm:salir">
 		        	Cerrar sesión<i class="material-icons right">account_circle</i>
 		        </button>
 	        </h:form>
         </nav>
-		<div class="container" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:jsf="http://xmlns.jcp.org/jsf">
+        
+		<div class="container">
 			<div class="row">
 				<div class="col s12">
-					<form class="formulario">
+					<h:form class="frm3">
 						<div class="row">
 							<div class="col s12 left">
 			                	<h5>Datos generales</h5>
 			                </div>
 							<div class="col s4">
 								<label class="campos" for="nombre">Nombre:</label>
-								<input type="text" id="nombre" name="nombre" placeholder="Nombre(s)" 
+								<input type="text" id="nombre" name="nombre" placeholder="Nombre(s)"
 								jsf:value="#{cliente.nombre}" required="TRUE" class="validate" />
 							</div>
 							<div class="col s4">
@@ -95,6 +100,11 @@
 								<label class="campos" for="apellidoM">Apellido Materno:</label>
 								<input type="text" id="apellidoM" name="apellidoM" placeholder="Segundo Apellido"
 								jsf:value="#{cliente.apellidoM}" class="validate" />
+							</div>
+							<div class="col s4">
+								<label class="campos" for="rfc">RFC:</label>
+								<input type="text" id="rfc" name="rfc" placeholder="EXAM990101PLE" 
+								jsf:value="#{cliente.rfc}" required="TRUE" class="validate" />
 							</div>
 						</div>
 						
@@ -156,7 +166,7 @@
 			                <div class="col s4">
 			                	<label class="campos" for="numero">Número Exterior:</label>
 			                	<input type="text" id="numero" name="numero" placeholder="Ingrese su número exterior"
-			                	jsf:value="#{direccion.numero}" required="FALSE" class="validate"/>
+			                	jsf:value="#{direccion.numero}" class="validate"/>
 			                </div>
 			                <div class="col s4">
 			                	<label class="campos" for="calle">Calle:</label>
@@ -171,7 +181,7 @@
 			                </div>
 		                	<div class="col s4">
 								<label class="campos" for="telefono">Teléfono:</label>
-								<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000"
+								<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000" 
 								jsf:value="#{cliente.telefono}" required="TRUE" class="validate" />
 							</div>
 							<div class="col s4">
@@ -194,10 +204,11 @@
 								</a>
 							</div>
 						</div>
-					</form>
+					</h:form>
 				</div>
 			</div>
 		</div>
+		
 		<script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script src="../../assets/js/panel_principal.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

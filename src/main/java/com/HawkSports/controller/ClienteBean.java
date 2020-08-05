@@ -81,4 +81,3 @@ public class ClienteBean implements Serializable {
 		return "clientes.xhtml?faces-redirect=true\"";
 	}
 }
-

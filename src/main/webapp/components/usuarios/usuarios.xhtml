@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>Hawk Sports - Usuarios</title>
     </h:head>
 
@@ -77,6 +76,7 @@
 		        </button>
 	        </h:form>
         </nav>
+        
 		<div class="container">
 			<div class="row">
 				<div class="col s3">
@@ -87,39 +87,40 @@
 				        	Nuevo<i class="material-icons right">add_circle</i>
 				        </button>
 					</h:form>
-			</div>
-			</div>
-			<div class="row">
-			<h:form>
-				<div class="col s12">
-					<table class="responsive-table highlight centered" >
-				    	<thead class="light-blue darken-1">
-							<tr>
-				              	<th class="white-text">Tipo</th>
-				              	<th class="white-text">Usuario</th>
-				              	<th class="white-text">Avatar</th>
-				              	<th class="white-text" colspan="2">Opciones</th>
-				          	</tr>	
-						</thead>
-						<tbody>
-							<c:forEach items="#{usuarioBean.listaUsuarios}" var="usuario">
-								<tr>
-									<td>#{usuario.tipo}</td>
-									<td>#{usuario.usuario}</td>
-									<td>#{usuario.imagen}</td>
-			                        <td>
-			                        	<h:commandButton id="editar" action="#{usuarioBean.editar(usuario.idUsuario, usuario.idDireccion)}" 
-											class="btn waves-effect waves-light amber darken-4" value="Editar" />
-				                        </td>
-			                        <td>
-			                        	<h:commandButton id="eliminar" action="#{usuarioBean.eliminar(empleado.idUsuario)}" 
-											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
-				                    	</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
 				</div>
+			</div>
+			
+			<div class="row">
+				<h:form>
+					<div class="col s12">
+						<table class="responsive-table highlight centered" >
+					    	<thead class="light-blue darken-1">
+								<tr>
+					              	<th class="white-text">Tipo</th>
+					              	<th class="white-text">Usuario</th>
+					              	<th class="white-text">Avatar</th>
+					              	<th class="white-text" colspan="2">Opciones</th>
+					          	</tr>	
+							</thead>
+							<tbody>
+								<c:forEach items="#{usuarioBean.listaUsuarios}" var="usuario">
+									<tr>
+										<td>#{usuario.tipo}</td>
+										<td>#{usuario.usuario}</td>
+										<td>#{usuario.imagen}</td>
+				                        <td>
+				                        	<h:commandButton id="editar" action="#{usuarioBean.editar(usuario.idUsuario)}" 
+											class="btn waves-effect waves-light amber darken-4" value="Editar" />
+					                    </td>
+				                        <td>
+				                        	<h:commandButton id="eliminar" action="#{usuarioBean.eliminar(empleado.idUsuario)}" 
+											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
+					                	</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</h:form>
 			</div>
 		</div>

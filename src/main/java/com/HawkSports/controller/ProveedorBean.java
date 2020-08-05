@@ -19,12 +19,11 @@ import com.HawkSports.model.Proveedor;
 public class ProveedorBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private ProveedorDAO proveedor;
 	private List<Proveedor> listaProveedores = new ArrayList<Proveedor>();
 
 	public List<Proveedor> getListaProveedores() {
-		proveedor = new ProveedorDAO();
-		listaProveedores = proveedor.consultar();
+		ProveedorDAO proveedorDAO = new ProveedorDAO();
+		listaProveedores = proveedorDAO.consultar();
 		return listaProveedores;
 	}
 

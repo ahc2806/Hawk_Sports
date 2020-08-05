@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>Hawk Sports - Proveedores</title>
     </h:head>
 
@@ -167,7 +166,7 @@
 			                <div class="col s4">
 			                	<label class="campos" for="numero">Número Exterior:</label>
 			                	<input type="text" id="numero" name="numero" placeholder="Ingrese su número exterior"
-			                	jsf:value="#{direccion.numero}" required="FALSE" class="validate"/>
+			                	jsf:value="#{direccion.numero}" class="validate"/>
 			                </div>
 			                <div class="col s4">
 			                	<label class="campos" for="calle">Calle:</label>
@@ -181,7 +180,7 @@
 			                	<h5>Datos de contacto</h5>
 			                </div>
 		                	<div class="col s4">
-								<label class="campos" for="telefono">Telefono:</label>
+								<label class="campos" for="telefono">Teléfono:</label>
 								<input type="tel" id="telefono" name="telefono" placeholder="000-0000-000"
 								jsf:value="#{proveedor.telefono}" required="TRUE" class="validate"/>
 							</div>
@@ -209,6 +208,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script src="../../assets/js/panel_principal.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

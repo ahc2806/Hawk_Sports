@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hawk Sports - Empleado</title>
+        <title>Hawk Sports - Usuarios</title>
     </h:head>
 
     <h:body>
@@ -35,11 +35,11 @@
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/empleados.png" alt="Empleados" width="35px"/>
-	                    <a href="empleados.xhtml">Empleados</a>
+	                    <a href="../empleados/empleados.xhtml">Empleados</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/usuarios.png" alt="Usuarios" width="35px"/>
-	                    <a href="../usuarios/usuarios.xhtml">Usuarios</a>
+	                    <a href="usuarios.xhtml">Usuarios</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/clientes.png" alt="Clientes" width="35px"/>
@@ -54,6 +54,10 @@
 	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
 	                <li class="sidenav-close">
+	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
+	                    <a href="../categorias/categorias.xhtml">Categorías</a>
+	                </li>
+	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/ventas.png" alt="Ventas" width="35px"/>
 	                    <a>Ventas</a>
 	                </li>
@@ -66,32 +70,31 @@
 	                    <a>Configuraciones</a>
 	                </li>
 	            </ul>
-	            <a href="#" class="brand-logo center white-text" id="titulo">Nuevo Empleado</a>
+	            <a href="#" class="brand-logo center white-text" id="titulo">Nuevo Usuario</a>
 	            <h:commandButton id="salir" action="#{usuarioBean.cerrar()}" style="display: none"></h:commandButton>
 		        <button class="btn-large waves-effect waves-light right btnSalir" type="submit" id="frm:salir" name="frm:salir">
 		        	Cerrar sesión<i class="material-icons right">account_circle</i>
 		        </button>
 	        </h:form>
         </nav>
+        
 		<div class="container">
 			<div class="row">
 				<div class="col s12">
-					<form class="formulario">
+					<h:form class="frm3">
 						<div class="row">
 							<div class="col s12 left">
 			                	<h5>Datos del usuario</h5>
 			                </div>
 							<div class="col s4">
 								<label class="campos" for="usuario">Usuario:</label>
-								<input type="text" id="usuario" name="usuario" placeholder="EXAMPLE123"/>
+								<input type="text" id="usuario" name="usuario" placeholder="EXAMPLE123"
+								jsf:value="#{usuario.usuario}" required="TRUE" class="validate"/>
 							</div>
 							<div class="col s4">
-								<label class="campos" for="contrasena">Contrasena:</label>
-								<input type="password" id="contrasena" name="contrasena" placeholder="Ingrese una contrasena segura"/>
-							</div>
-							<div class="col s4">
-								<label class="campos" for="confirmarContrasena">Confirmar contrasena:</label>
-								<input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirme su contrasena"/>
+								<label class="campos" for="contrasena">Contraseña:</label>
+								<input type="password" id="contrasena" name="contrasena" placeholder="Ingrese una contraseña segura"
+								jsf:value="#{usuario.contrasena}" required="TRUE" class="validate"/>
 							</div>
 						</div>
 						
@@ -101,23 +104,24 @@
 			                </div>
 		                	<div class="col s4">
 		                		<label class="campos">Tipo:</label>
-		                		<br/>
-		                		<br/>
-		                		<select class="browser-default grey lighten-3">
-								    <option value="Administrador">Administrador</option>
-								    <option value="Empleado">Empleado</option>
-								    <option value="Cliente">Cliente</option>
-								</select>
+		                		<br />
+		                		<br />
+		                		<h:selectOneMenu class="browser-default grey lighten-3" value="#{usuario.tipo}">
+			                		<f:selectItem itemLabel="Administrador" itemValue="Administrador" />
+			                		<f:selectItem itemLabel="Empleado" itemValue="Empleado" />
+			                		<f:selectItem itemLabel="Invitado" itemValue="Invitado" />
+			                	</h:selectOneMenu>
 							</div>
-							<div class="col s6">
+							<div class="col s4">
 								<label class="campos">Foto de perfil:</label> 
 								<div class="file-field input-field">
-									<div class="btn">
+									<div class="btn-small">
 										<span>Seleccionar archivo</span>
-										<input type="file" />
+										<input type="file" accept="image/png, image/jpeg" />
 									</div>
 									<div class="file-path-wrapper">
-										<input class="file-path validate" type="text" placeholder="Ningun archivo seleccionado" />
+										<input class="file-path validate" type="text" placeholder="Ningun archivo seleccionado" 
+										jsf:value="#{usuario.imagen}" required="TRUE"/>
 									</div>
 								</div>
 							</div>
@@ -125,7 +129,7 @@
 						
 						<div class="row">
 							<div class="col s2">
-								<h:commandButton id="guardar" action="#{usuarioBean.agregar(usuario, direccion)}" style="display: none"/>
+								<h:commandButton id="guardar" action="#{usuarioBean.agregar(usuario)}" style="display: none"/>
 								<button class="btn waves-effect waves-light" type="submit" id="frm3:guardar" name="frm3:guardar">
 									Guardar<i class="material-icons right">send</i>
 								</button>
@@ -136,10 +140,11 @@
 								</a>
 							</div>
 						</div>
-					</form>
+					</h:form>
 				</div>
 			</div>
 		</div>
+		
 		<script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
         <script src="../../assets/js/panel_principal.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

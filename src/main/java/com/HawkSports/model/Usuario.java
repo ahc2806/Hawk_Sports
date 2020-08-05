@@ -28,8 +28,6 @@ public class Usuario {
     private String tipo;
     @Column
     private boolean estado;
-    @Column(name = "id_direccion")
-	private Short idDireccion;
 	
 
     public Short getIdUsuario() {
@@ -87,14 +85,6 @@ public class Usuario {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    public Short getIdDireccion() {
-		return idDireccion;
-	}
-
-	public void setIdDireccion(Short idDireccion) {
-		this.idDireccion = idDireccion;
-	}
 
     @Override
     public String toString() {

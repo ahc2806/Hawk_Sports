@@ -4,7 +4,7 @@ CREATE TABLE usuario(
 	contrasena VARCHAR(40) NOT NULL, 
 	imagen VARCHAR(30) NOT NULL,
 	fecha_creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	tipo VARCHAR(30) NOT NULL CHECK(tipo = 'administrador' OR tipo = 'empleado' OR tipo = 'cliente'),
+	tipo VARCHAR(30) NOT NULL CHECK(tipo = 'Administrador' OR tipo = 'Empleado' OR tipo = 'Cliente'),
 	estado BOOLEAN NOT NULL DEFAULT TRUE 
 );
 
@@ -246,4 +246,12 @@ DELIMITER $$
     BEGIN
         UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
     END
+$$
+
+-- 4) PROCEDIMIENTOS ALMACENADOS
+DELIMITER $$
+	CREATE PROCEDURE usuario_logueado (IN usuario VARCHAR(10), IN contrasena VARCHAR(10))
+	BEGIN
+		DECLARE nombre = VARCHAR()
+	END;
 $$
