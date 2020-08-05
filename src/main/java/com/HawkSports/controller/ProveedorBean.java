@@ -79,6 +79,6 @@ public class ProveedorBean implements Serializable {
 		proveedor = proveedorDAO.consultarId(idProveedor);
 		proveedor.setEstado(false);		
 		proveedorDAO.editar(proveedor);
-		return "empleados.xhtml?faces-redirect=true\"";
+		return "proveedores.xhtml?faces-redirect=true\"";
 	}
 }
