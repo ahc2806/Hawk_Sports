@@ -20,6 +20,7 @@ public class EmpleadoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+	private List<Empleado> listaEmpleadosPapelera = new ArrayList<Empleado>();
 
 	public List<Empleado> getListaEmpleados() {
 		EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -29,6 +30,16 @@ public class EmpleadoBean implements Serializable {
 
 	public void setListaEmpleados(List<Empleado> listaEmpleados) {
 		this.listaEmpleados = listaEmpleados;
+	}
+	
+	public List<Empleado> getListaEmpleadosPapelera() {
+		EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+		listaEmpleadosPapelera = empleadoDAO.consultarPapelera();
+		return listaEmpleadosPapelera;
+	}
+
+	public void setListaEmpleadosPapelera(List<Empleado> listaEmpleadosPapelera) {
+		this.listaEmpleadosPapelera = listaEmpleadosPapelera;
 	}
 	
 	public String nuevo() {
@@ -78,6 +89,15 @@ public class EmpleadoBean implements Serializable {
 		Empleado empleado = new Empleado();
 		empleado = empleadoDAO.consultarId(idEmpleado);
 		empleado.setEstado(false);		
+		empleadoDAO.editar(empleado);
+		return "empleados.xhtml?faces-redirect=true\"";
+	}
+	
+	public String restaurar(Short idEmpleado) {	
+		EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+		Empleado empleado = new Empleado();
+		empleado = empleadoDAO.consultarId(idEmpleado);
+		empleado.setEstado(true);		
 		empleadoDAO.editar(empleado);
 		return "empleados.xhtml?faces-redirect=true\"";
 	}

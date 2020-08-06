@@ -19,6 +19,7 @@ public class ClienteBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private List<Cliente> listaClientes = new ArrayList<Cliente>();
+    private List<Cliente> listaClientesPapelera = new ArrayList<Cliente>();
 
     public List<Cliente> getListaClientes() {
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -29,6 +30,17 @@ public class ClienteBean implements Serializable {
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
+    
+    public List<Cliente> getListaClientesPapelera() {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        listaClientesPapelera = clienteDAO.consultarPapelera();
+        return listaClientesPapelera;
+    }
+
+    public void setListaClientesPapelera(List<Cliente> listaClientesPapelera) {
+        this.listaClientesPapelera = listaClientesPapelera;
+    }
+    
     
     public String nuevo() {
 		Direccion direccion = new Direccion();
@@ -77,6 +89,14 @@ public class ClienteBean implements Serializable {
 		Cliente cliente = new Cliente();
 		cliente = clienteDAO.consultarId(idCliente);
 		cliente.setEstado(false);		
+		clienteDAO.editar(cliente);
+		return "clientes.xhtml?faces-redirect=true\"";
+	}
+	public String restaurar(Short idCliente) {	
+		ClienteDAO clienteDAO = new ClienteDAO();
+		Cliente cliente = new Cliente();
+		cliente = clienteDAO.consultarId(idCliente);
+		cliente.setEstado(true);		
 		clienteDAO.editar(cliente);
 		return "clientes.xhtml?faces-redirect=true\"";
 	}

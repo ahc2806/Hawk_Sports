@@ -32,6 +32,19 @@ public class EmpleadoDAO {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Empleado> consultarPapelera() {
+		try {
+			List<Empleado> lista_empleados;
+			Query query = entityManager.createQuery("SELECT e FROM Empleado e WHERE e.estado = FALSE");
+			lista_empleados = query.getResultList();
+			return lista_empleados;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public Empleado consultarId(Short idEmpleado) {
 		try {

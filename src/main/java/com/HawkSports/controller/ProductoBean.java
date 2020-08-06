@@ -18,6 +18,7 @@ public class ProductoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private List<Producto> listaProductos = new ArrayList<Producto>();
+	private List<Producto> listaProductosPapelera = new ArrayList<Producto>();
 
 	public List<Producto> getListaProductos() {
 		ProductoDAO productoDAO = new ProductoDAO();
@@ -27,6 +28,16 @@ public class ProductoBean implements Serializable {
 
 	public void setListaProductos(List<Producto> listaProductos) {
 		this.listaProductos = listaProductos;
+	}
+	
+	public List<Producto> getListaProductosPapelera() {
+		ProductoDAO productoDAO = new ProductoDAO();
+		listaProductosPapelera = productoDAO.consultarPapelera();
+		return listaProductosPapelera;
+	}
+
+	public void setListaProductosPapelera(List<Producto> listaProductosPapelera) {
+		this.listaProductosPapelera = listaProductosPapelera;
 	}
 	
 	public String nuevo() {
@@ -63,6 +74,15 @@ public class ProductoBean implements Serializable {
 		Producto producto = new Producto();
 		producto = productoDAO.consultarId(idProducto);
 		producto.setEstado(false);		
+		productoDAO.editar(producto);
+		return "productos.xhtml?faces-redirect=true\"";
+	}
+	
+	public String restaurar(Short idProducto) {	
+		ProductoDAO productoDAO = new ProductoDAO();
+		Producto producto = new Producto();
+		producto = productoDAO.consultarId(idProducto);
+		producto.setEstado(true);		
 		productoDAO.editar(producto);
 		return "productos.xhtml?faces-redirect=true\"";
 	}

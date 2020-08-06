@@ -32,6 +32,19 @@ public class CategoriaDAO {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Categoria> consultarPapelera() {
+		try {
+			List<Categoria> lista_categorias;
+			Query query = entityManager.createQuery("SELECT c FROM Categoria c WHERE c.estado = FALSE");
+			lista_categorias = query.getResultList();
+			return lista_categorias;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public Categoria consultarId(Short idCategoria) {
 		try {

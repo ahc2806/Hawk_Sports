@@ -32,6 +32,19 @@ public class ClienteDAO {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Cliente> consultarPapelera() {
+		try {
+			List<Cliente> lista_clientes;
+			Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.estado = FALSE");
+			lista_clientes = query.getResultList();
+			return lista_clientes;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public Cliente consultarId(Short idCliente) {
 		try {

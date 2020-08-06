@@ -20,6 +20,7 @@ public class ProveedorBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private List<Proveedor> listaProveedores = new ArrayList<Proveedor>();
+	private List<Proveedor> listaProveedoresPapelera = new ArrayList<Proveedor>();
 
 	public List<Proveedor> getListaProveedores() {
 		ProveedorDAO proveedorDAO = new ProveedorDAO();
@@ -30,6 +31,17 @@ public class ProveedorBean implements Serializable {
 	public void setListaProveedores(List<Proveedor> listaProveedores) {
 		this.listaProveedores = listaProveedores;
 	}
+	
+	public List<Proveedor> getListaProveedoresPapelera() {
+		ProveedorDAO proveedorDAO = new ProveedorDAO();
+		listaProveedoresPapelera = proveedorDAO.consultarPapelera();
+		return listaProveedoresPapelera;
+	}
+
+	public void setListaProveedoresPapelera(List<Proveedor> listaProveedoresPapelera) {
+		this.listaProveedoresPapelera = listaProveedoresPapelera;
+	}
+	
 	public String nuevo() {
 		Direccion direccion = new Direccion();
 		Proveedor proveedor = new Proveedor();
@@ -77,6 +89,15 @@ public class ProveedorBean implements Serializable {
 		Proveedor proveedor = new Proveedor();
 		proveedor = proveedorDAO.consultarId(idProveedor);
 		proveedor.setEstado(false);		
+		proveedorDAO.editar(proveedor);
+		return "proveedores.xhtml?faces-redirect=true\"";
+	}
+	
+	public String restaurar(Short idProveedor) {	
+		ProveedorDAO proveedorDAO = new ProveedorDAO();
+		Proveedor proveedor = new Proveedor();
+		proveedor = proveedorDAO.consultarId(idProveedor);
+		proveedor.setEstado(true);		
 		proveedorDAO.editar(proveedor);
 		return "proveedores.xhtml?faces-redirect=true\"";
 	}

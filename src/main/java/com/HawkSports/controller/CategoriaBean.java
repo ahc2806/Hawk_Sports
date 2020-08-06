@@ -17,6 +17,7 @@ public class CategoriaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private List<Categoria> listaCategorias = new ArrayList<Categoria>();
+    private List<Categoria> listaCategoriasPapelera = new ArrayList<Categoria>();
 
     public List<Categoria> getListaCategorias() {
         CategoriaDAO categoriaDAO = new CategoriaDAO();
@@ -27,6 +28,18 @@ public class CategoriaBean implements Serializable {
     public void setListaCategorias(List<Categoria> listaCategorias) {
         this.listaCategorias = listaCategorias;
     }
+    
+    public List<Categoria> getListaCategoriasPapelera() {
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        listaCategoriasPapelera = categoriaDAO.consultarPapelera();
+        return listaCategoriasPapelera;
+    }
+
+    public void setListaCategoriasPapelera(List<Categoria> listaCategoriasPapelera) {
+        this.listaCategoriasPapelera = listaCategoriasPapelera;
+    }
+    
+    
     public String nuevo() {
 		Categoria categoria = new Categoria();
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -60,6 +73,15 @@ public class CategoriaBean implements Serializable {
 		Categoria categoria = new Categoria();
 		categoria = categoriaDAO.consultarId(idCategoria);
 		categoria.setEstado(false);		
+		categoriaDAO.editar(categoria);
+		return "categorias.xhtml?faces-redirect=true\"";
+	}
+	
+	public String restaurar(Short idCategoria) {	
+		CategoriaDAO categoriaDAO = new CategoriaDAO();
+		Categoria categoria = new Categoria();
+		categoria = categoriaDAO.consultarId(idCategoria);
+		categoria.setEstado(true);		
 		categoriaDAO.editar(categoria);
 		return "categorias.xhtml?faces-redirect=true\"";
 	}

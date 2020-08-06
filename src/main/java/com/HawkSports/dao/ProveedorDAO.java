@@ -32,6 +32,19 @@ public class ProveedorDAO {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Proveedor> consultarPapelera() {
+		try {
+			List<Proveedor> lista_proveedores;
+			Query query = entityManager.createQuery("SELECT p FROM Proveedor p WHERE p.estado = FALSE");
+			lista_proveedores = query.getResultList();
+			return lista_proveedores;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public Proveedor consultarId(Short idProveedor) {
 		try {

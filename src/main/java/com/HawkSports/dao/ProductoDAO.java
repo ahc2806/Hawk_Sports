@@ -33,6 +33,19 @@ public class ProductoDAO {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Producto> consultarPapelera() {
+		try {
+			List<Producto> lista_productos = new ArrayList<>();
+			Query query = entityManager.createQuery("SELECT p FROM Producto p WHERE p.estado = FALSE");
+			lista_productos = query.getResultList();
+			return lista_productos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public Producto consultarId(Short idProducto) {
 		try {
