@@ -12,6 +12,11 @@ public class SesionUtils {
 	public static HttpServletRequest getRequest() {
 		return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 	}
+	
+	public static String getFullName() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		return session.getAttribute("full_name").toString();
+	}
 
 	public static String getUserName() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);

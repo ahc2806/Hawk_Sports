@@ -37,6 +37,19 @@ public class UsuarioDAO {
             return null;
         }
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Usuario> consultarPapelera() {
+        try {
+            List<Usuario> lista_usuarios;
+            Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.estado = FALSE");
+            lista_usuarios = query.getResultList();
+            return lista_usuarios;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public Usuario consultarId(Short idUsuario) {
         try {
@@ -89,5 +102,17 @@ public class UsuarioDAO {
             return true;
          else 
         	return false;
+    }
+    
+    public String nombre_usuario_logueado(String usuario, String contrasena) {
+    	StoredProcedureQuery query = entityManager.createStoredProcedureQuery("nombre_usuario_logueado");
+		query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
+        query.setParameter(1, usuario);
+        query.setParameter(2, contrasena);
+        query.execute();
+        String full_name = (String) query.getOutputParameterValue(3);
+        return full_name;
     }
 }

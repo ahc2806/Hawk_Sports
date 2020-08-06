@@ -1,3 +1,6 @@
+-- CREATE DATABASE hawk_sports
+-- DROP DATABASE hawk_sports
+
 CREATE TABLE usuario(
 	id_usuario SMALLINT AUTO_INCREMENT PRIMARY KEY,
 	usuario VARCHAR(25) NOT NULL,
@@ -141,9 +144,9 @@ INSERT INTO direccion (calle, numero, colonia, codigo_p, ciudad, entidad_f ) VAL
 INSERT INTO direccion (calle, numero, colonia, codigo_p, ciudad, entidad_f ) VALUES ('155','208','El campo', '94906', 'Minatitlán','Veracruz');
 
 -- usuario
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES ('alejandro20', 'as23as552*k1', 'alejandro.jpg', 'Administrador');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES ('alejandro20', '1234567890', 'alejandro.jpg', 'Administrador');
 INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('ahc2806', 'ahc280699', 'alonso.jpg', 'Administrador');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('xavi04', 'spiderman23', 'xavier.jpg', 'Administrador');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('xavi04', '1234567890', 'xavier.jpg', 'Administrador');
 INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Maria', 'marianita23', 'maria.jpg', 'Empleado');
 INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Naomi', 'naomi212', 'naomi.jpg', 'Empleado');
 INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alex', 'alexx21', 'alex.jpg', 'Empleado');
@@ -171,7 +174,6 @@ INSERT INTO proveedor(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, i
 INSERT INTO proveedor(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, id_direccion) VALUES('JUE784523156', 'Rodrigo', 'Martinez', NULL, '2715886497', 'rodriMartinez@gmail.com', '13');
 INSERT INTO proveedor(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, id_direccion) VALUES('GHR116312470', 'Juan', 'Morales', 'Sanchez', '2716032455','juanmorales@gmail.com', '14');
 
-
 -- empleado
 INSERT INTO empleado(nombre, apellido_p, apellido_m, telefono, correo_e, puesto, sueldo, id_direccion, id_usuario) VALUES ('Alejandro', 'Morales', 'Vázquez', '2794561278', 'alejandromv@gmail.com', 'Supervisor', 1200, 1,1);
 INSERT INTO empleado(nombre, apellido_p, apellido_m, telefono, correo_e, puesto, sueldo, id_direccion, id_usuario) VALUES ('Alonso', 'Hernández', 'Cortez', '2711345429', 'alonsohc@gmail.com', 'Gerente', 1800, 2,2);
@@ -190,7 +192,6 @@ INSERT INTO cliente(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, id_
 INSERT INTO cliente(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, id_direccion, id_usuario) VALUES('jkl74968521d4', 'Marcos', 'Guevara', 'Ladron', '2756489584', 'marcosgl@gmail.com',13,13);
 INSERT INTO cliente(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, id_direccion, id_usuario) VALUES('jko749562185f', 'Alondra', 'Duran', 'Barbosa', '2716648523', 'alondradb@gmail.com',14,14);
 INSERT INTO cliente(rfc, nombre, apellido_p, apellido_m, telefono, correo_e, id_direccion, id_usuario) VALUES('jko794792185f', 'Abimael', 'Avendaño', 'Rosas', '2715204679', 'abimaelar@gmail.com',15,15);
-
 
 -- producto
 INSERT INTO producto(sku, descripcion, precio_compra, precio_venta, existencia, imagen, id_categoria) VALUES ('0001', 'Balón Futbol adidas', 200.0, 250.0, 30, 'balon.jpg', 1);
@@ -214,17 +215,33 @@ INSERT INTO producto(sku, descripcion, precio_compra, precio_venta, existencia, 
 INSERT INTO producto(sku, descripcion, precio_compra, precio_venta, existencia, imagen, id_categoria) VALUES ('1061', 'Short puma', 250.0, 300.0, 90, 'shortPuma.jpg', 2);
 INSERT INTO producto(sku, descripcion, precio_compra, precio_venta, existencia, imagen, id_categoria) VALUES ('1088', 'Tennis puma', 800.0, 850.0, 20, 'tennisPuma.jpg', 2);
 
+-- Borrado de tablas
+DROP TABLE detalle_venta;
+DROP TABLE venta;
+DROP TABLE detalle_pedido;
+DROP TABLE pedido;
+DROP TABLE proveedor;
+DROP TABLE empleado;
+DROP TABLE cliente;
+DROP TABLE direccion;
+DROP TABLE usuario;
+DROP TABLE producto;
+DROP TABLE categoria;
+
+
+
 -- 2) INDICES 
-CREATE INDEX i_tipo_usuario ON usuario(tipo);
-CREATE INDEX i_puesto_empleado ON empleado(puesto);
-CREATE INDEX i_nombre_proveedor ON proveedor(nombre);
-CREATE INDEX i_nombre_cliente ON cliente(nombre);
-CREATE INDEX i_entidad_f ON direccion(entidad_f);
-CREATE UNIQUE INDEX i_sku ON producto(sku);
-CREATE INDEX i_nombre_categoria ON categoria(nombre);
+CREATE INDEX i_nombre_categoria ON categoria (nombre);
+CREATE INDEX i_precio_producto ON producto (precio_venta);
+CREATE INDEX i_usuario_usuario ON usuario (usuario);
+CREATE INDEX i_entidad_direccion ON direccion (entidad_f);
+CREATE INDEX i_apellidop_cliente ON cliente (apellido_p);
+CREATE INDEX i_puesto_empleado ON empleado (puesto);
+CREATE UNIQUE INDEX IF NOT EXISTS i_rfc_proveedor ON proveedor (rfc);
+
+
 
 -- 3) TRIGGERS
-DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_empleado;
 DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_empleado AFTER UPDATE ON empleado FOR EACH ROW
     BEGIN
@@ -232,7 +249,6 @@ DELIMITER $$
     END;
 $$
 
-DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_cliente;
 DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_cliente AFTER UPDATE ON cliente FOR EACH ROW
     BEGIN
@@ -240,7 +256,6 @@ DELIMITER $$
     END;
 $$
 
-DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_proveedor;
 DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_proveedor AFTER UPDATE ON proveedor FOR EACH ROW
     BEGIN
@@ -248,7 +263,6 @@ DELIMITER $$
     END;
 $$
 
-DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario_insertar;
 DELIMITER $$
     CREATE TRIGGER encripta_la_contrasena_del_usuario_insertar BEFORE INSERT ON usuario FOR EACH ROW
     BEGIN
@@ -257,7 +271,6 @@ DELIMITER $$
     END;
 $$
 
-DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario_editar;
 DELIMITER $$
     CREATE TRIGGER encripta_la_contrasena_del_usuario_editar BEFORE UPDATE ON usuario FOR EACH ROW
     BEGIN
@@ -265,8 +278,16 @@ DELIMITER $$
     END;
 $$
 
+-- Borrado de TRIGGERS
+DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_empleado;
+DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_cliente;
+DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_proveedor;
+DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario_insertar;
+DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario_editar;
+
+
+
 -- 4) PROCEDIMIENTOS ALMACENADOS
-DROP PROCEDURE IF EXISTS desencriptar_contrasena;
 DELIMITER $$
 	CREATE PROCEDURE desencriptar_contrasena (IN idUsuario SMALLINT, OUT passwd VARCHAR(40))
 	BEGIN
@@ -276,3 +297,57 @@ DELIMITER $$
 		WHERE id_usuario = idUsuario;
 	END;
 $$
+
+DELIMITER $$
+	CREATE PROCEDURE nombre_usuario_logueado(IN user VARCHAR(25), IN passwd VARCHAR(40), OUT full_name VARCHAR(62))
+	BEGIN
+		DECLARE tipo_user VARCHAR(15);
+		SELECT tipo
+		INTO tipo_user
+		FROM usuario
+		WHERE usuario = user AND contrasena = HEX(AES_ENCRYPT(passwd, 'HawkSports'));
+
+		IF tipo_user = 'Administrador' OR tipo_user = 'Empleado' THEN
+			SELECT CONCAT(nombre, ' ', apellido_p, ' ', apellido_m)
+			INTO full_name
+			FROM usuario u INNER JOIN empleado e ON u.id_usuario = e.id_usuario
+			WHERE u.usuario = user AND contrasena = HEX(AES_ENCRYPT(passwd, 'HawkSports'));
+		ELSE
+			SELECT CONCAT(nombre, ' ', apellido_p, ' ', apellido_m)
+			INTO full_name
+			FROM usuario u INNER JOIN cliente c ON u.id_usuario = c.id_usuario
+			WHERE u.usuario = user AND contrasena = HEX(AES_ENCRYPT(passwd, 'HawkSports'));
+		END IF;
+	END;
+$$
+
+-- Borrado de PROCEDIMIENTOS ALMACENADOS
+DROP PROCEDURE IF EXISTS nombre_usuario_logueado;
+DROP PROCEDURE IF EXISTS desencriptar_contrasena;
+
+
+
+-- 5) VISTAS
+-- Lista de todos los usuarios
+CREATE OR REPLACE VIEW datos_usuarios AS SELECT id_usuario, usuario, tipo, fecha_creacion FROM usuario;
+SELECT * FROM datos_usuarios;
+
+-- Lista de todos los proveedores incluyendo su dirección (la dirección debe aparecer en una sóla columna)
+CREATE OR REPLACE VIEW datos_proveedores AS SELECT id_proveedor, rfc, nombre, CONCAT (calle,', ', numero,' ', colonia,', ', codigo_p,', ', ciudad,', ', entidad_f) AS direccion, telefono, correo_e 
+FROM proveedor p INNER JOIN direccion d ON p.id_direccion=d.id_direccion;
+SELECT * FROM datos_proveedores;
+
+-- Lista de todos los empleados incluyendo su dirección (la dirección debe aparecer en una sóla columna)
+CREATE OR REPLACE VIEW datos_empleados AS SELECT id_empleado, nombre, puesto, sueldo, CONCAT (calle,', ', numero,' ', colonia,', ', codigo_p,', ', ciudad,', ', entidad_f) AS direccion, telefono, correo_e 
+FROM empleado e INNER JOIN direccion d ON e.id_direccion=d.id_direccion;
+SELECT * FROM datos_empleados;
+
+-- Lista de todos los clientes incluyendo su dirección (la dirección debe aparecer en una sóla columna)
+CREATE OR REPLACE VIEW datos_clientes AS SELECT id_cliente, rfc, nombre, CONCAT (calle,', ', numero,' ', colonia,', ', codigo_p,', ', ciudad,', ', entidad_f) AS direccion, telefono, correo_e 
+FROM cliente c INNER JOIN direccion d ON c.id_direccion=d.id_direccion;
+SELECT * FROM datos_clientes;
+
+-- Lista de todos los productos incluyendo su categoría
+CREATE OR REPLACE VIEW datos_productos AS SELECT id_producto, sku, descripcion, precio_venta, precio_compra, nombre AS categoria, existencia 
+FROM producto p INNER JOIN categoria c ON p.id_categoria=c.id_categoria;
+SELECT * FROM datos_productos;

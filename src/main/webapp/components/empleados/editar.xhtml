@@ -25,8 +25,8 @@
 	                            <img src="../../assets/img/fondos/portada.jpg" width="300px" />
 	                        </div>
 	                        <a href="#user"><img class="circle" src="../../assets/img/avatares/avatar1.png" /></a>
-	                        <a href="#name"><span class="white-text name">Alonso Hernandez</span></a>
-	                        <a href="#email"><span class="white-text email">14547@utcv.edu.mx</span></a>
+	                        <a href="#name"><span class="white-text name">#{logueoBean.nombre}</span></a>
+	                        <a href="#email"><span class="white-text email">#{logueoBean.usuario}</span></a>
 	                    </div>
 	                </li>
 	                <li class="sidenav-close">
@@ -204,10 +204,8 @@
 						
 						<div class="row">
 							<div class="col s2">
-								<h:commandButton id="actualizar" action="#{empleadoBean.actualizar(empleado, direccion)}" style="display: none"/>
-								<button class="btn waves-effect waves-light" type="submit" id="frm3:actualizar" name="frm3:actualizar">
-									Guardar<i class="material-icons right">send</i>
-								</button>
+								<h:commandButton class="btn waves-effect waves-light" value="Guardar" 
+								action="#{empleadoBean.actualizar(empleado, direccion)}" />
 							</div>
 							<div class="col s2">
 								<a class="btn waves-effect waves-light red darken-4" href="empleados.xhtml">

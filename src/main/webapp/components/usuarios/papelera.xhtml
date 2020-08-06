@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hawk Sports - Productos</title>
+        <title>Hawk Sports - Usuarios</title>
     </h:head>
 
     <h:body>
@@ -38,7 +38,7 @@
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/usuarios.png" alt="Usuarios" width="35px"/>
-	                    <a href="../usuarios/usuarios.xhtml">Usuarios</a>
+	                    <a href="usuarios.xhtml">Usuarios</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/clientes.png" alt="Clientes" width="35px"/>
@@ -50,7 +50,7 @@
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/productos.png" alt="Productos" width="35px"/>
-	                    <a href="productos.xhtml">Productos</a>
+	                    <a href="../productos/productos.xhtml">Productos</a>
 	                </li>
 	                <li class="sidenav-close">
 	                    <img src="../../assets/img/iconos/categorias.png" alt="Categorias" width="35px"/>
@@ -69,20 +69,20 @@
 	                    <a>Configuraciones</a>
 	                </li>
 	            </ul>
-	            <a href="#" class="brand-logo center white-text" id="titulo">Papelera de productos</a>
+	            <a href="#" class="brand-logo center white-text" id="titulo">Papelera de suarios</a>
 	            <h:commandButton id="salir" action="#{usuarioBean.cerrar()}" style="display: none"></h:commandButton>
 		        <button class="btn-large waves-effect waves-light right btnSalir" type="submit" id="frm:salir" name="frm:salir">
 		        	Cerrar sesión<i class="material-icons right">account_circle</i>
 		        </button>
 	        </h:form>
         </nav>
-
+        
 		<div class="container">
 			<div class="row">
 				<div class="col s3">
 					<h:form id="frm1">
-						<br />
-						<a class="btn waves-effect waves-light red darken-4" href="productos.xhtml">
+						<br/>
+						<a class="btn waves-effect waves-light red darken-4" href="usuarios.xhtml">
 							Cancelar<i class="material-icons right">cancel</i>
 						</a>
 					</h:form>
@@ -92,33 +92,25 @@
 			<div class="row">
 				<h:form>
 					<div class="col s12">
-						<table class="responsive-table highlight centered">
-							<thead class="light-blue darken-1">
+						<table class="responsive-table highlight centered" >
+					    	<thead class="light-blue darken-1">
 								<tr>
-									<th class="white-text">SKU</th>
-									<th class="white-text">Descripción</th>
-									<th class="white-text">P/Compra</th>
-									<th class="white-text">P/Venta</th>
-									<th class="white-text">Existencia</th>
-									<th class="white-text">Imagen</th>
-									<th class="white-text" colspan="2">Opciones</th>
-								</tr>
+					              	<th class="white-text">Tipo</th>
+					              	<th class="white-text">Usuario</th>
+					              	<th class="white-text">Avatar</th>
+					              	<th class="white-text">Opciones</th>
+					          	</tr>	
 							</thead>
 							<tbody>
-								<c:forEach items="#{productoBean.listaProductosPapelera}" var="producto">
+								<c:forEach items="#{usuarioBean.listaUsuariosPapelera}" var="usuario">
 									<tr>
-										<td>#{producto.sku}</td>
-										<td>#{producto.descripcion}</td>
-										<td>$ #{producto.precioCompra}</td>
-										<td>$ #{producto.precioVenta}</td>
-										<td>#{producto.existencia}</td>
-										<td>
-											<img src="../../assets/img/productos/#{producto.imagen}" alt="#{producto.descripcion}" height="100px" />
-										</td>
-										<td>
-											<h:commandButton id="restaurar" action="#{productoBean.restaurar(producto.idProducto)}" 
+										<td>#{usuario.tipo}</td>
+										<td>#{usuario.usuario}</td>
+										<td>#{usuario.imagen}</td>
+				                        <td>
+				                        	<h:commandButton id="restaurar" action="#{usuarioBean.restaurar(usuario.idUsuario)}" 
 											class="btn waves-effect waves-light amber darken-4" value="Restaurar" />
-										</td>
+					                	</td>
 									</tr>
 								</c:forEach>
 							</tbody>

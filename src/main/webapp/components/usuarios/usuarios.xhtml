@@ -24,8 +24,8 @@
 	                            <img src="../../assets/img/fondos/portada.jpg" width="300px" />
 	                        </div>
 	                        <a href="#user"><img class="circle" src="../../assets/img/avatares/avatar1.png" /></a>
-	                        <a href="#name"><span class="white-text name">Alonso Hernandez</span></a>
-	                        <a href="#email"><span class="white-text email">14547@utcv.edu.mx</span></a>
+	                        <a href="#name"><span class="white-text name">#{logueoBean.nombre}</span></a>
+	                        <a href="#email"><span class="white-text email">#{logueoBean.usuario}</span></a>
 	                    </div>
 	                </li>
 	                <li class="sidenav-close">
@@ -79,15 +79,22 @@
         
 		<div class="container">
 			<div class="row">
-				<div class="col s3">
-					<h:form id="frm1">
-						<br />
+				<h:form id="frm1">
+					<div class="col s2">
+						<br/>
 						<h:commandButton id="nuevo" action="#{usuarioBean.nuevo()}" style="display: none" />
 						<button class="btn waves-effect waves-light" type="submit" id="frm1:nuevo" name="frm1:nuevo">
 				        	Nuevo<i class="material-icons right">add_circle</i>
 				        </button>
-					</h:form>
-				</div>
+					</div>
+				
+					<div class="col s2">
+						<br/>
+						<a class="btn waves-effect waves-light pink accent-4" href="papelera.xhtml">
+				        	Papelera<i class="material-icons right">restore_from_trash</i>
+				        </a>
+					</div>
+				</h:form>
 			</div>
 			
 			<div class="row">

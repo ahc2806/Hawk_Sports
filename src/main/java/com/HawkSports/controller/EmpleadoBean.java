@@ -41,7 +41,7 @@ public class EmpleadoBean implements Serializable {
 	public void setListaEmpleadosPapelera(List<Empleado> listaEmpleadosPapelera) {
 		this.listaEmpleadosPapelera = listaEmpleadosPapelera;
 	}
-	
+
 	public String nuevo() {
 		Direccion direccion = new Direccion();
 		Empleado empleado = new Empleado();
