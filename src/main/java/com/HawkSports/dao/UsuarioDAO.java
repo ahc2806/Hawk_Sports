@@ -3,7 +3,9 @@ package com.HawkSports.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import com.HawkSports.model.JPAUtil;
 import com.HawkSports.model.Usuario;
@@ -39,6 +41,12 @@ public class UsuarioDAO {
     public Usuario consultarId(Short idUsuario) {
         try {
             usuario = entityManager.find(Usuario.class, idUsuario);
+            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("desencriptar_contrasena");
+            query.registerStoredProcedureParameter(1, Short.class, ParameterMode.IN);
+            query.registerStoredProcedureParameter(2, String.class, ParameterMode.OUT);
+            query.setParameter(1, idUsuario);
+            query.execute();
+            usuario.setContrasena((String) query.getOutputParameterValue(2));
             return usuario;
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,8 +77,11 @@ public class UsuarioDAO {
 
     @SuppressWarnings("unchecked")
     public boolean esValido(String usuario, String contrasena) {
-        Query query = entityManager.createQuery(
-                "SELECT u.usuario, u.contrasena FROM Usuario u WHERE u.usuario LIKE :usuario and u.contrasena LIKE :contrasena");
+        Query query = entityManager.createQuery("SELECT u.usuario, u.contrasena "
+        									+ "FROM Usuario u "
+        									+ "WHERE u.usuario = :usuario "
+        									+ "AND u.contrasena = HEX(AES_ENCRYPT(:contrasena, 'HawkSports')) "
+        									+ "AND u.estado = TRUE");
         query.setParameter("usuario", usuario);
         query.setParameter("contrasena", contrasena);
         List<String> dato = query.getResultList();

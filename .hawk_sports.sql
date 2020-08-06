@@ -1,7 +1,7 @@
 CREATE TABLE usuario(
 	id_usuario SMALLINT AUTO_INCREMENT PRIMARY KEY,
 	usuario VARCHAR(25) NOT NULL,
-	contrasena VARCHAR(40) NOT NULL, 
+	contrasena CHAR(32) NOT NULL, 
 	imagen VARCHAR(30) NOT NULL,
 	fecha_creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	tipo VARCHAR(30) NOT NULL CHECK(tipo = 'Administrador' OR tipo = 'Empleado' OR tipo = 'Cliente'),
@@ -141,21 +141,21 @@ INSERT INTO direccion (calle, numero, colonia, codigo_p, ciudad, entidad_f ) VAL
 INSERT INTO direccion (calle, numero, colonia, codigo_p, ciudad, entidad_f ) VALUES ('155','208','El campo', '94906', 'Minatitlán','Veracruz');
 
 -- usuario
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES ('alejandro20', MD5('as23as552*k1'), 'alejandro.jpg', 'Administrador');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES ('alejandro20', 'as23as552*k1', 'alejandro.jpg', 'Administrador');
 INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('ahc2806', 'ahc280699', 'alonso.jpg', 'Administrador');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('xavi04', MD5('spiderman23'), 'xavier.jpg', 'Administrador');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Maria', MD5('marianita23'), 'maria.jpg', 'Empleado');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Naomi', MD5('naomi212'), 'naomi.jpg', 'Empleado');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alex', MD5('alexx21'), 'alex.jpg', 'Empleado');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Julio', MD5('Juliopr23'), 'julio.jpg', 'Empleado');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Francisco', MD5('fran234'), 'francisco.jpg', 'Empleado');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Pedro', MD5('pedro12'), 'pedro.jpg', 'Empleado');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Roberto', MD5('ro5256'), 'roberto.jpg', 'Cliente');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alexa', MD5('alexa213'), 'alexa.jpg', 'Cliente');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Angelica', MD5('angelica22'), 'angelica.jpg', 'Cliente');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Marcos', MD5('mar212'), 'marcos.jpg', 'Cliente');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alondra', MD5('alon213'), 'alondra.jpg', 'Cliente');
-INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Abimael', MD5('abima234'), 'abimael.jpg', 'Cliente');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('xavi04', 'spiderman23', 'xavier.jpg', 'Administrador');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Maria', 'marianita23', 'maria.jpg', 'Empleado');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Naomi', 'naomi212', 'naomi.jpg', 'Empleado');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alex', 'alexx21', 'alex.jpg', 'Empleado');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Julio', 'Juliopr23', 'julio.jpg', 'Empleado');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Francisco', 'fran234', 'francisco.jpg', 'Empleado');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Pedro', 'pedro12', 'pedro.jpg', 'Empleado');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Roberto', 'ro5256', 'roberto.jpg', 'Cliente');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alexa', 'alexa213', 'alexa.jpg', 'Cliente');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Angelica', 'angelica22', 'angelica.jpg', 'Cliente');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Marcos', 'mar212', 'marcos.jpg', 'Cliente');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Alondra', 'alon213', 'alondra.jpg', 'Cliente');
+INSERT INTO usuario (usuario, contrasena, imagen, tipo) VALUES('Abimael', 'abima234', 'abimael.jpg', 'Cliente');
 
 -- categoria
 INSERT INTO categoria(nombre) VALUES ('Deportes');
@@ -224,7 +224,7 @@ CREATE UNIQUE INDEX i_sku ON producto(sku);
 CREATE INDEX i_nombre_categoria ON categoria(nombre);
 
 -- 3) TRIGGERS
-DROP TRIGGER elimina_direccion_al_actualizar_empleado;
+DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_empleado;
 DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_empleado AFTER UPDATE ON empleado FOR EACH ROW
     BEGIN
@@ -232,7 +232,7 @@ DELIMITER $$
     END
 $$
 
-DROP TRIGGER elimina_direccion_al_actualizar_cliente;
+DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_cliente;
 DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_cliente AFTER UPDATE ON cliente FOR EACH ROW
     BEGIN
@@ -240,7 +240,7 @@ DELIMITER $$
     END
 $$
 
-DROP TRIGGER elimina_direccion_al_actualizar_proveedor;
+DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_proveedor;
 DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_proveedor AFTER UPDATE ON proveedor FOR EACH ROW
     BEGIN
@@ -248,10 +248,23 @@ DELIMITER $$
     END
 $$
 
--- 4) PROCEDIMIENTOS ALMACENADOS
+DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario;
 DELIMITER $$
-	CREATE PROCEDURE usuario_logueado (IN usuario VARCHAR(10), IN contrasena VARCHAR(10))
+    CREATE TRIGGER encripta_la_contrasena_del_usuario BEFORE INSERT ON usuario FOR EACH ROW
+    BEGIN
+	
+        SET NEW.contrasena = HEX(AES_ENCRYPT(NEW.contrasena, 'HawkSports'));
+    END
+$$
+
+-- 4) PROCEDIMIENTOS ALMACENADOS
+DROP PROCEDURE IF EXISTS desencriptar_contrasena;
+DELIMITER $$
+	CREATE PROCEDURE desencriptar_contrasena (IN idUsuario SMALLINT, OUT passwd VARCHAR(40))
 	BEGIN
-		DECLARE nombre = VARCHAR()
+		SELECT AES_DECRYPT(UNHEX(contrasena), 'HawkSports') 
+		INTO passwd
+		FROM usuario
+		WHERE id_usuario = idUsuario;
 	END;
 $$
