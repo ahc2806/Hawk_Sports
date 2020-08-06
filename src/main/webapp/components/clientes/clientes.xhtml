@@ -79,15 +79,22 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col s3">
-					<h:form id="frm1">
-						<br />
+				<h:form id="frm1">
+					<div class="col s2">
+						<br/>
 						<h:commandButton id="nuevo" action="#{clienteBean.nuevo()}" style="display: none" />
 						<button class="btn waves-effect waves-light" type="submit" id="frm1:nuevo" name="frm1:nuevo">
 				        	Nuevo<i class="material-icons right">add_circle</i>
 				        </button>
-					</h:form>
-				</div>
+					</div>
+				
+					<div class="col s2">
+						<br/>
+						<a class="btn waves-effect waves-light pink accent-4" href="papelera.xhtml">
+				        	Papelera<i class="material-icons right">restore_from_trash</i>
+				        </a>
+					</div>
+				</h:form>
 			</div>
 			
 			<div class="row">

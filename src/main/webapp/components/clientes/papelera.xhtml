@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../../assets/css/panel_principal.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hawk Sports - Papelera de clientes</title>
+        <title>Hawk Sports - Clientes</title>
     </h:head>
 
     <h:body>
@@ -83,8 +83,8 @@
 					<h:form id="frm1">
 						<br />
 						<a class="btn waves-effect waves-light red darken-4" href="clientes.xhtml">
-									Cancelar<i class="material-icons right">cancel</i>
-								</a>
+							Cancelar<i class="material-icons right">cancel</i>
+						</a>
 					</h:form>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 										<td>#{cliente.telefono}</td>
 										<td>#{cliente.correoE}</td>
 										<td>
-				                        	<h:commandButton id="editar" action="#{clienteBean.restaurar(cliente.idCliente)}" 
+				                        	<h:commandButton id="restaurar" action="#{clienteBean.restaurar(cliente.idCliente)}" 
 											class="btn waves-effect waves-light amber darken-4" value="Restaurar" />
 					                    </td>
 				                      
