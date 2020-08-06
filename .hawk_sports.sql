@@ -229,7 +229,7 @@ DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_empleado AFTER UPDATE ON empleado FOR EACH ROW
     BEGIN
         UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
-    END
+    END;
 $$
 
 DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_cliente;
@@ -237,7 +237,7 @@ DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_cliente AFTER UPDATE ON cliente FOR EACH ROW
     BEGIN
         UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
-    END
+    END;
 $$
 
 DROP TRIGGER IF EXISTS elimina_direccion_al_actualizar_proveedor;
@@ -245,16 +245,24 @@ DELIMITER $$
     CREATE TRIGGER elimina_direccion_al_actualizar_proveedor AFTER UPDATE ON proveedor FOR EACH ROW
     BEGIN
         UPDATE direccion d SET d.estado = NEW.estado WHERE d.id_direccion = OLD.id_direccion;
-    END
+    END;
 $$
 
-DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario;
+DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario_insertar;
 DELIMITER $$
-    CREATE TRIGGER encripta_la_contrasena_del_usuario BEFORE INSERT ON usuario FOR EACH ROW
+    CREATE TRIGGER encripta_la_contrasena_del_usuario_insertar BEFORE INSERT ON usuario FOR EACH ROW
     BEGIN
 	
         SET NEW.contrasena = HEX(AES_ENCRYPT(NEW.contrasena, 'HawkSports'));
-    END
+    END;
+$$
+
+DROP TRIGGER IF EXISTS encripta_la_contrasena_del_usuario_editar;
+DELIMITER $$
+    CREATE TRIGGER encripta_la_contrasena_del_usuario_editar BEFORE UPDATE ON usuario FOR EACH ROW
+    BEGIN
+        SET NEW.contrasena = HEX(AES_ENCRYPT(NEW.contrasena, 'HawkSports'));
+    END;
 $$
 
 -- 4) PROCEDIMIENTOS ALMACENADOS
