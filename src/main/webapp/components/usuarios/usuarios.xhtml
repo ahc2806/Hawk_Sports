@@ -121,7 +121,7 @@
 					                    </td>
 				                        <td>
 				                        	<h:commandButton id="eliminar" action="#{usuarioBean.eliminar(usuario.idUsuario)}" 
-											class="btn waves-effect waves-light red darken-4" value="Eliminar"/>
+											class="btn waves-effect waves-light red darken-4" value="Eliminar" onclick="confirm('¿Estás seguro?');"/>
 					                	</td>
 									</tr>
 								</c:forEach>
